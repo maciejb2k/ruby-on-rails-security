@@ -19,8 +19,6 @@ Let me know if you'd like to refine or expand any sections!
 
 ## Project Outline
 
-### Project Outline: Security Vulnerabilities in Ruby on Rails Applications
-
 Security vulnerabilities are organized into OWASP categories:
 
 ### 1. **A01: Broken Access Control**
