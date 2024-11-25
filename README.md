@@ -102,3 +102,23 @@ Security vulnerabilities are organized into OWASP categories:
 - **Description:** Lack of static code analysis in CI/CD pipelines to detect vulnerabilities early.
 - **Examples:**
   1. A software company’s CI pipeline does not include tools to scan for known vulnerabilities. During a routine deployment, a vulnerable dependency is pushed to production, allowing an attacker to exploit a deserialization vulnerability, gaining unauthorized access to the system.
+
+---
+
+## Creating new Rails Applications
+
+To create a new Rails application, run the `./create-rails-app.sh` script in the root directory.
+```bash
+chmod +x create-rails-app.sh
+./create-rails-app.sh
+```
+
+Then navigate to the new project, e.g., `cd mass-assignment`, and run the Rails server:
+```bash
+docker compose up --up --remove-orphans --build
+```
+
+To stop the containers, use:
+```bash
+docker compose down
+```
