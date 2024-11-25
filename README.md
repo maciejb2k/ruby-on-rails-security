@@ -105,7 +105,7 @@ Security vulnerabilities are organized into OWASP categories:
 
 ---
 
-## Creating new Rails Applications
+## Creating a new Rails applications
 
 To create a new Rails application, run the `./create-rails-app.sh` script in the root directory.
 ```bash
@@ -115,7 +115,13 @@ chmod +x create-rails-app.sh
 
 Then navigate to the new project, e.g., `cd mass-assignment`, and run the Rails server:
 ```bash
-docker compose up --up --remove-orphans --build
+docker compose up -d --remove-orphans
+```
+
+To rebuild the containers, use:
+```bash
+docker compose down
+docker compose up -d --remove-orphans --build
 ```
 
 To stop the containers, use:
