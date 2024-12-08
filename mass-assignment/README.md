@@ -2,7 +2,7 @@
 
 Aby uruchomić aplikację, wykonaj następującą komendę:
 ```bash
-docker compose up
+docker compose up -d --remove-orphans
 ```
 
 Zatrzymanie aplikacji odbywa się za pomocą:
