@@ -22,7 +22,7 @@ docker run --rm \
   bash -c "
     addgroup --gid \$GID appuser && \
     adduser --uid \$UID --gid \$GID --disabled-password --gecos '' appuser && \
-    su appuser -c 'gem install rails -v $RAILS_VERSION && rails new . --skip-action-mailer --skip-action-mailbox --skip-action-text --skip-active-job --skip-active-storage --skip-action-cable --skip-jbuilder --skip-test --skip-system-test --skip-rubocop --database=postgresql'
+    su appuser -c 'gem install rails -v $RAILS_VERSION && rails new . --skip-action-mailer --skip-action-mailbox --skip-action-text --skip-active-job --skip-active-storage --skip-action-cable --skip-jbuilder --skip-test --skip-system-test --skip-rubocop --css tailwind --database=postgresql'
   "
 
 cat <<EOF > Dockerfile
@@ -101,6 +101,7 @@ services:
       - db
     stdin_open: true
     tty: true
+    command: bash -c "bin/rails db:create && bin/rails db:migrate && bin/rails db:schema:load && bin/rails db:seed && rm -f tmp/pids/server.pid && bin/dev"
 
   db:
     image: postgres:16
@@ -120,8 +121,16 @@ cat <<EOF > .env
 DATABASE_URL=postgresql://postgres:postgres@db:5432
 EOF
 
+cat <<EOF > Procfile.dev
+web: bin/rails server -p 3000 -b '0.0.0.0'
+css: bin/rails tailwindcss:watch
+EOF
+
 echo "Building Docker image..."
 docker compose build app
+
+echo "Removing .git directory..."
+rm -rf git/
 
 echo "Rails project setup complete!"
 echo "Navigate to the project directory ($PROJECT_NAME) to start development."

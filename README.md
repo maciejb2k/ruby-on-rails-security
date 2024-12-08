@@ -42,6 +42,18 @@ docker compose down
 docker compose up -d --remove-orphans --build
 ```
 
+To access the container with Rails app:
+```bash
+cd <project-name>
+docker compose exec -it app bash
+```
+
+To access PSQL shell:
+```bash
+cd <project-name>
+docker compose exec -it db psql -U postgres
+```
+
 To stop the containers, use:
 ```bash
 docker compose down
