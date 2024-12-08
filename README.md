@@ -31,8 +31,9 @@ chmod +x create-rails-app.sh
 ./create-rails-app.sh
 ```
 
-Then navigate to the new project, e.g., `cd mass-assignment`, and run the Rails server:
+Then navigate to the new project and run the Rails server:
 ```bash
+cd <project-name>
 docker compose up -d --remove-orphans
 ```
 
@@ -52,6 +53,11 @@ To access PSQL shell:
 ```bash
 cd <project-name>
 docker compose exec -it db psql -U postgres
+```
+
+To restart the application (remove all data), use:
+```bash
+docker compose restart
 ```
 
 To stop the containers, use:
