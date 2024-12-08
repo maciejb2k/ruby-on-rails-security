@@ -95,6 +95,19 @@ W prawdziwych aplikacjach nie należy wyłączać tego mechanizmu, lub ustawić 
 W przypadku modelu SecureUser zastosowano strong parameters w kontrolerze, dzięki czemu możliwe jest przypisanie jedynie określonych atrybutów, np. `name` i `email`. Atrybut `admin` jest wyłączony z listy dozwolonych parametrów:
 
 ```ruby
+# PATCH/PUT /secure_users/1
+def update
+  if @secure_user.update(secure_user_params)
+    redirect_to @secure_user, notice: 'Secure user was successfully updated.', status: :see_other
+  else
+    render :edit, status: :unprocessable_entity
+  end
+end
+
+...
+
+private
+
 def secure_user_params
   params.require(:secure_user).permit(:name, :email)
 end
