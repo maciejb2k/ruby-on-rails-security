@@ -1,6 +1,6 @@
 # Mass Assignment
 
-Aby uruchomić aplikację, wykonaj następującą komendę:
+Aby uruchomić aplikację, to najpierw zatrzymaj poprzedni przykład, jeżeli jest uruchomiony i wykonaj następującą komendę:
 ```bash
 docker compose up -d --remove-orphans
 ```

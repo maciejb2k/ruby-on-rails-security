@@ -1,8 +1,8 @@
 #!/bin/bash
 
 read -p "Enter project name: " PROJECT_NAME
-read -p "Enter Ruby version (e.g., 3.2): " RUBY_VERSION
-read -p "Enter Rails version (e.g., 7.0.7): " RAILS_VERSION
+read -p "Enter Ruby version (e.g., 3.3.5): " RUBY_VERSION
+read -p "Enter Rails version (e.g., 7.2): " RAILS_VERSION
 
 if [[ -z "$PROJECT_NAME" || -z "$RUBY_VERSION" || -z "$RAILS_VERSION" ]]; then
   echo "Error: All inputs are required. Aborting."
@@ -95,8 +95,8 @@ services:
       - .:/app
     environment:
       - DATABASE_URL=\${DATABASE_URL}
-      - UID=\${UID}
-      - GID=\${GID}
+      - UID=\${UID:-1000}
+      - GID=\${GID:-1000}
     depends_on:
       - db
     stdin_open: true
@@ -124,6 +124,37 @@ EOF
 cat <<EOF > Procfile.dev
 web: bin/rails server -p 3000 -b '0.0.0.0'
 css: bin/rails tailwindcss:watch
+EOF
+
+cat <<EOF > .gitignore
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore storage (uploaded files in development and any SQLite databases).
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+/public/assets
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
 EOF
 
 echo "Building Docker image..."
