@@ -59,7 +59,21 @@ http://localhost:3000/insecure_users/1
 
 ![Insecure User Updated](./screenshots/show-updated-insecure.png)
 
-Zobaczysz, że atrybut admin został zmieniony na true, co potwierdza podatność modelu InsecureUser.
+Zobaczysz, że atrybut admin został zmieniony na true, co potwierdza podatność modelu `InsecureUser`.
+
+Wynika to z faktu, że do modelu `InsecureUser` można przypisać dowolne parametry, w tym ukryte atrybuty, co stanowi zagrożenie dla bezpieczeństwa aplikacji.
+
+Jak widać w pliku `app/controllers/insecure_users_controller.rb`, wszystkie parametry są przypisywane bez żadnych ograniczeń (to samo dotyczy akcji `create`):
+```ruby
+# PATCH/PUT /insecure_users/1
+def update
+  if @insecure_user.update(params[:insecure_user])
+    redirect_to @insecure_user, notice: 'Insecure user was successfully updated.', status: :see_other
+  else
+    render :edit, status: :unprocessable_entity
+  end
+end
+```
 
 ## Zalecenia
 
