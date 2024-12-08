@@ -1,0 +1,2 @@
+module SecureUsersHelper
+end

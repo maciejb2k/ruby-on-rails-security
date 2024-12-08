@@ -1,0 +1,2 @@
+module InsecureUsersHelper
+end

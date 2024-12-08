@@ -1,0 +1,23 @@
+### Update request for InsecureUser
+PATCH http://localhost:3000/insecure_users/1
+Content-Type: application/json
+
+{
+  "insecure_user": {
+    "name": "Updated Alice",
+    "email": "updated_alice@example.com",
+    "admin": true
+  }
+}
+
+### Update request for SecureUser
+PATCH http://localhost:3000/secure_users/1
+Content-Type: application/json
+
+{
+  "secure_user": {
+    "name": "Updated Alice",
+    "email": "updated_alice@example.com",
+    "admin": true
+  }
+}
