@@ -130,7 +130,7 @@ echo "Building Docker image..."
 docker compose build app
 
 echo "Removing .git directory..."
-rm -rf git/
+rm -rf .git/
 
 echo "Rails project setup complete!"
 echo "Navigate to the project directory ($PROJECT_NAME) to start development."
