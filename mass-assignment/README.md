@@ -1,69 +1,57 @@
 # Mass Assignment
 
-Aby uruchomić aplikację, to najpierw zatrzymaj poprzedni przykład, jeżeli jest uruchomiony i wykonaj następującą komendę:
-```bash
-docker compose up -d --remove-orphans
-```
+## Description
 
-Zatrzymanie aplikacji odbywa się za pomocą:
-```bash
-docker compose down
-```
+Mass assignment is a mechanism in Ruby on Rails that allows assigning multiple parameters to a model at once, such as when creating a new record or updating an existing one. By default, Rails protects applications from unwanted parameter assignments, but improper configuration can lead to security vulnerabilities.
 
-W celu rozpoczęcia pracy od nowa (usunięcia wszystkich danych) użyj:
-```bash
-docker compose restart
-```
+## Vulnerability Example
 
-## Opis
+This application demonstrates two user models:
+- `InsecureUser` - a model vulnerable to mass assignment attacks.
+- `SecureUser` - a model protected against mass assignment attacks.
 
-Mass assignment to mechanizm w Ruby on Rails, który pozwala na przypisanie wielu parametrów do modelu jednocześnie, na przykład podczas tworzenia nowego rekordu lub aktualizacji istniejącego. Domyślnie Rails chroni aplikację przed niepożądanym przypisaniem parametrów, jednak nieprawidłowa konfiguracja może prowadzić do podatności bezpieczeństwa.
+### Step 1: Run the Application and Verify the Vulnerability
 
-## Przykład podatności
-
-W tej aplikacji przygotowano dwa modele użytkowników:
-- `InsecureUser` - model podatny na atak masowego przypisania.
-- `SecureUser` - model chroniony przed atakami masowego przypisania.
-
-### Krok 1: Uruchomienie aplikacji i weryfikacja podatności
-
-Po uruchomieniu aplikacji przejdź pod adres:
+After starting the application, go to the following address:
 
 http://localhost:3000/insecure_users
 
 ![Insecure Users](./screenshots/insecure-users.png)
 
-Zobaczysz listę użytkowników. Następnie otwórz stronę pierwszego użytkownika:
+You will see a list of users. Then, open the page for the first user:
 
 http://localhost:3000/insecure_users/1
 
 ![Insecure User](./screenshots/show-insecure-user.png)
 
-Na stronie szczegółów użytkownika widzisz, że atrybut `admin` jest ustawiony na wartość `false`.
+On the user's detail page, you will see that the `admin` attribute is set to `false`.
 
-### Krok 2: Próba modyfikacji ukrytego atrybutu
+### Step 2: Attempt to Modify a Hidden Attribute
 
-Na stronie edycji tego użytkownika nie znajdziesz pola do edycji atrybutu `admin`. Możemy jednak założyć, że potencjalny atakujący może odgadnąć jego istnienie i próbować zmodyfikować go poprzez bezpośrednie wysłanie zapytania HTTP.
+On the edit page for this user, you will not find a field to edit the `admin` attribute. However, a potential attacker could guess its existence and attempt to modify it by directly sending an HTTP request.
 
 ![Edit Insecure User](./screenshots/edit-insecure-user.png)
 
-Przygotowane zapytanie HTTP zmieniające wartość admin znajdziesz w pliku requests.http.
+An HTTP request to change the `admin` value is prepared in the `requests.http` file.
 
 ![Edit Insecure User Request](./screenshots/update-insecure.png)
 
-Wykonaj je za pomocą narzędzia do testowania API, np. wtyczki **REST Client** w **Visual Studio Code**, klikając przycisk Send Request.
+Execute it using an API testing tool, such as the **REST Client** plugin in **Visual Studio Code**, by clicking the "Send Request" button.
 
-### Krok 3: Sprawdzenie wyniku
-Po wysłaniu zapytania otrzymasz odpowiedź 200 OK. Otwórz ponownie stronę użytkownika:
+### Step 3: Check the Result
+
+After sending the request, you will receive a `200 OK` response. Open the user page again:
+
 http://localhost:3000/insecure_users/1
 
 ![Insecure User Updated](./screenshots/show-updated-insecure.png)
 
-Zobaczysz, że atrybut admin został zmieniony na true, co potwierdza podatność modelu `InsecureUser`.
+You will see that the `admin` attribute has been changed to `true`, confirming the vulnerability in the `InsecureUser` model.
 
-Wynika to z faktu, że do modelu `InsecureUser` można przypisać dowolne parametry, w tym ukryte atrybuty, co stanowi zagrożenie dla bezpieczeństwa aplikacji.
+This vulnerability arises because the `InsecureUser` model allows any parameters to be assigned, including hidden attributes, which poses a security risk for the application.
 
-Jak widać w pliku `app/controllers/insecure_users_controller.rb`, wszystkie parametry są przypisywane bez żadnych ograniczeń (to samo dotyczy akcji `create`):
+As seen in the `app/controllers/insecure_users_controller.rb` file, all parameters are assigned without restrictions (this also applies to the `create` action):
+
 ```ruby
 # PATCH/PUT /insecure_users/1
 def update
@@ -75,24 +63,26 @@ def update
 end
 ```
 
-## Zalecenia
+## Recommendations
 
-Ruby on Rails oferuje domyślne zabezpieczenie przed atakami masowego przypisania, wymuszając stosowanie strong parameters w kontrolerach. Dzięki temu możemy jawnie określić, które atrybuty mogą być przypisywane podczas tworzenia lub aktualizacji rekordu.
+Ruby on Rails provides default protection against mass assignment attacks by enforcing the use of strong parameters in controllers. This allows developers to explicitly specify which attributes can be assigned during record creation or updates.
 
 ### Strong Parameters
-Jeśli spróbujesz przypisać atrybuty do modelu bez ich jawnego określenia w strong parameters, Rails zgłosi błąd:
+
+If you try to assign attributes to a model without explicitly defining them in strong parameters, Rails will raise an error:
 `ActiveModel::ForbiddenAttributesError`.
 
-W tej aplikacji celowo wyłączono domyślne zabezpieczenie, zmieniając konfigurację w pliku `config/application.rb`:
+In this application, the default protection was deliberately disabled by modifying the configuration in the `config/application.rb` file:
 
 ```ruby
 config.action_controller.permit_all_parameters = true
 ```
 
-W prawdziwych aplikacjach nie należy wyłączać tego mechanizmu, lub ustawić go na `false`.
+In real applications, this mechanism should not be disabled, or it should be set to `false`.
 
-### Przykład poprawnego zabezpieczenia
-W przypadku modelu SecureUser zastosowano strong parameters w kontrolerze, dzięki czemu możliwe jest przypisanie jedynie określonych atrybutów, np. `name` i `email`. Atrybut `admin` jest wyłączony z listy dozwolonych parametrów:
+### Example of Proper Protection
+
+For the `SecureUser` model, strong parameters are implemented in the controller, ensuring that only specific attributes, such as `name` and `email`, can be assigned. The `admin` attribute is excluded from the list of permitted parameters:
 
 ```ruby
 # PATCH/PUT /secure_users/1
@@ -113,13 +103,14 @@ def secure_user_params
 end
 ```
 
-### Weryfikacja zabezpieczeń
-Po wysłaniu zapytania HTTP dla modelu `SecureUser`, aplikacja zwróci odpowiedź `200 OK`. 
+### Verifying the Security Measures
+
+After sending an HTTP request for the `SecureUser` model, the application will return a `200 OK` response.
 
 ![Secure User Updated](./screenshots/show-secure.png)
 
 ![Edit Secure User Request](./screenshots/update-secure.png)
 
-Jednak atrybut `admin` nie zostanie zmieniony, ponieważ nie został dozwolony w strong parameters.
+However, the `admin` attribute will not be changed because it is not permitted in the strong parameters.
 
 ![Secure User Updated](./screenshots/show-updated-secure.png)
