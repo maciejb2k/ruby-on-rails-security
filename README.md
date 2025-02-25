@@ -2,13 +2,7 @@
 
 Ten projekt, będący moją pracą magisterską z informatyki na Uniwersytecie Rzeszowskim, przedstawia dobre praktyki bezpieczeństwa w aplikacjach Ruby on Rails zgodnie z listą OWASP Top 10 z 2021 roku.
 
----
-
-## Przegląd projektu
-
 Projekt jest zorganizowany jako monorepozytorium, które ma na celu demonstrowanie typowych podatności bezpieczeństwa w aplikacjach Ruby on Rails oraz przedstawianie sposobów ich eliminacji.
-
-To repozytorium zawiera praktyczne, skonteneryzowane przykłady podatnych aplikacji wraz z bezpiecznymi implementacjami.
 
 Każdy projekt w repozytorium koncentruje się na konkretnej podatności bezpieczeństwa, oferując:
 - **Demonstrowanie podatności**: Pokazanie, co się dzieje, gdy środki bezpieczeństwa nie są wdrożone.
@@ -17,7 +11,7 @@ Każdy projekt w repozytorium koncentruje się na konkretnej podatności bezpiec
 
 ---
 
-## Podsumowanie projektu
+## Spis omawianych podatności
 
 ## 3.1 A01:2021-Broken Access Control
 
