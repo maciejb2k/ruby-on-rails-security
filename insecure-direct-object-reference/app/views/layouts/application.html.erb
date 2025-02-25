@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "App" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full bg-gray-800 text-white py-4 shadow-md">
+      <div class="container mx-auto flex justify-between items-center px-5">
+        <div>
+          <a href="/" class="text-xl font-bold">IDOR</a>
+        </div>
+
+        <% if user_signed_in? %>
+          <div class="flex items-center space-x-4">
+            <span>Logged as: <strong><%= current_user.email %></strong></span>
+            <%= link_to 'Sign Out', destroy_user_session_path, class: 'bg-gray-500 hover:bg-red-600 text-white px-4 py-2 rounded' %>
+          </div>
+        <% else %>
+          <div>
+            <%= link_to 'Sign In', new_user_session_path, class: 'bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded' %>
+          </div>
+        <% end %>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto mt-28 px-5 flex justify-center">
+      <%= yield %>
+    </main>
+  </body>
+</html>
