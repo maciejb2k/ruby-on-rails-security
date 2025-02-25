@@ -1,149 +1,153 @@
 # Ruby on Rails Security
 
-This project, which is a part of a Master's Degree in Computer Science at the University of Rzeszów, explores security practices in Ruby on Rails applications, according to the OWASP Top 10 list from 2021.
+Ten projekt, będący moją pracą magisterską z informatyki na Uniwersytecie Rzeszowskim, przedstawia dobre praktyki bezpieczeństwa w aplikacjach Ruby on Rails zgodnie z listą OWASP Top 10 z 2021 roku.
 
 ---
 
-## Project Overview
+## Przegląd projektu
 
-This project is structured as a monorepository designed to demonstrate common security vulnerabilities in Ruby on Rails applications and provide guidance on how to address them.
+Projekt jest zorganizowany jako monorepozytorium, które ma na celu demonstrowanie typowych podatności bezpieczeństwa w aplikacjach Ruby on Rails oraz przedstawianie sposobów ich eliminacji.
 
-This repository contains practical, Dockerized examples of vulnerable applications alongside secure implementations.
+To repozytorium zawiera praktyczne, skonteneryzowane przykłady podatnych aplikacji wraz z bezpiecznymi implementacjami.
 
-Each project in the repository focuses on a specific security vulnerability, providing:
-1. **Demonstration of the vulnerability**: What happens when security measures are not in place.
-2. **Impact analysis**: Understanding the consequences of the vulnerability.
-3. **Secure implementation**: How to mitigate or prevent the vulnerability.
+Każdy projekt w repozytorium koncentruje się na konkretnej podatności bezpieczeństwa, oferując:
+- **Demonstrowanie podatności**: Pokazanie, co się dzieje, gdy środki bezpieczeństwa nie są wdrożone.
+- **Analizę wpływu**: Zrozumienie konsekwencji podatności.
+- **Bezpieczną implementację**: Sposoby łagodzenia lub zapobiegania podatnościom.
 
 ---
 
-## Project Summary
+## Podsumowanie projektu
 
 ## 3.1 A01:2021-Broken Access Control
 
 ### 3.1.1 Mass Assignment
-- Example: https://github.com/maciejb2k/ruby-on-rails-security/tree/main/mass-assignment
+- Przykład: https://github.com/maciejb2k/ruby-on-rails-security/tree/main/mass-assignment
 
 ### 3.1.2 Insecure Direct Object References (IDOR)
-- Example: -
+- Przykład: https://github.com/maciejb2k/ruby-on-rails-security/tree/main/insecure-direct-object-reference
 
 ### 3.1.3 Local File Inclusion (LFI)
-- Example: -
+- Przykład: -
 
 ### 3.1.4 Object Access Middleware
-- Example: -
+- Przykład: -
 
 ## 3.2 A02:2021-Cryptographic Failures
+- Przykład: -
 
 ### 3.2.1 Weak Encoding for Password
-- Example: -
+- Przykład: -
 
 ### 3.2.2 Use of Hard-Coded Cryptographic Key
-- Example: -
+- Przykład: -
 
 ### 3.2.3 Cleartext Transmission of Sensitive Information
-- Example: -
+- Przykład: -
 
 ## 3.3 A03:2021-Injection
+- Przykład: -
 
 ### 3.3.1 Remote Code Execution (RCE)
-- Example: -
+- Przykład: -
 
 ### 3.3.2 Cross-Site Scripting (XSS)
-- Example: -
+- Przykład: -
 
 ### 3.3.3 Cross-Site Request Forgery (CSRF)
-- Example: -
+- Przykład: -
 
 ### 3.3.4 SQL Injection (SQLi)
-- Example: -
+- Przykład: -
 
 ## 3.4 A04:2021-Insecure Design
+- Przykład: -
 
 ### 3.4.1 Open Redirect
-- Example: -
+- Przykład: -
 
 ### 3.4.2 Regex Denial of Service (ReDoS)
-- Example: -
+- Przykład: -
 
 ### 3.4.3 Login Rate Limiting
-- Example: -
+- Przykład: -
 
 ## 3.5 A05:2021-Security Misconfiguration
+- Przykład: -
 
 ### 3.5.1 Token / Cookie Misconfiguration
-- Example: -
+- Przykład: -
 
 ### 3.5.2 XML DDoS
-- Example: -
+- Przykład: -
 
 ### 3.5.3 TLS Force / HSTS
-- Example: -
+- Przykład: -
 
 ### 3.5.4 Debug Mode
-- Example: -
+- Przykład: -
 
 ## 3.6 A06:2021-Vulnerable and Outdated Components
+- Przykład: -
 
 ### 3.6.1 Static Analysis on CI/CD
-- Example: -
+- Przykład: -
 
 ## 3.7 A09:2021-Security Logging and Monitoring Failures
+- Przykład: -
 
-### 3.7.1 Password Logging
-- Example: -
+### 3.7.1 Enable Logging
+- Przykład: -
 
 ### 3.7.2 Logging Sensitive Information
-- Example: -
+- Przykład: -
 
 ### 3.7.3 No Log to User
-- Example: -
+- Przykład: -
 
 ## 3.8 A10:2021-Server-Side Request Forgery
-
-### 3.8.1 Server-Side Request Forgery (SSRF)
-- Example: -
+- Przykład: -
 
 ---
 
-## Creating a new Rails applications
+## Tworzenie nowej aplikacji Rails
 
-To create a new Rails application, run the `./create-rails-app.sh` script in the root directory.
+Aby utworzyć nową aplikację Rails, uruchom skrypt `./create-rails-app.sh` w katalogu głównym.
 ```bash
 chmod +x create-rails-app.sh
 ./create-rails-app.sh
 ```
 
-Then navigate to the new project and run the Rails server:
+Następnie przejdź do nowego projektu i uruchom serwer Rails:
 ```bash
 cd <project-name>
 docker compose up -d --remove-orphans
 ```
 
-To rebuild the containers, use:
+Aby przebudować kontenery, użyj:
 ```bash
 docker compose down
 docker compose up -d --remove-orphans --build
 ```
 
-To access the container with Rails app:
+Aby uzyskać dostęp do kontenera z aplikacją Rails:
 ```bash
 cd <project-name>
 docker compose exec -it app bash
 ```
 
-To access PSQL shell:
+Aby uzyskać dostęp do powłoki PSQL:
 ```bash
 cd <project-name>
 docker compose exec -it db psql -U postgres
 ```
 
-To restart the application (remove all data), use:
+Aby zrestartować aplikację (usuwając wszystkie dane), użyj:
 ```bash
 docker compose restart
 ```
 
-To stop the containers, use:
+Aby zatrzymać kontenery, użyj:
 ```bash
 docker compose down
 ```

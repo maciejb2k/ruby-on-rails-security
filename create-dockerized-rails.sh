@@ -163,5 +163,19 @@ docker compose build app
 echo "Removing .git directory..."
 rm -rf .git/
 
+mkdir screenshots
+
+cat <<EOF > README.md
+# $PROJECT_NAME
+
+## Opis
+
+## Przykład
+
+## Skutki
+
+## Zalecenia
+EOF
+
 echo "Rails project setup complete!"
 echo "Navigate to the project directory ($PROJECT_NAME) to start development."
