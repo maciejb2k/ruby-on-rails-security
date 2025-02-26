@@ -6,7 +6,17 @@ Projekt jest zorganizowany jako monorepozytorium zawierające serię małych apl
 
 Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zostać wykorzystana oraz jakie są jej konsekwencje. Następnie prezentuje poprawną, bezpieczną implementację, wraz z omówieniem technik zabezpieczeń i najlepszych praktyk.
 
+---
+
+🚧 To repozytorium jest wciąż rozwijane – regularnie dodawane są nowe przykłady!
+
+🌍 Obecnie jest dostępne tylko po polsku, ale w przyszłości pojawi się wersja angielska.
+
+---
+
 ## Spis omawianych podatności według OWASP Top 10 (2021)
+
+Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 7.2` oraz `Ruby 3.3.5`.
 
 ### 3.1 A01:2021 - Broken Access Control
 
