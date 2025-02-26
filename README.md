@@ -8,162 +8,68 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 
 ## Spis omawianych podatności
 
-### 3.1 A01:2021-Broken Access Control
+### 3.1 A01:2021 - Broken Access Control
 
-#### 3.1.1 Mass Assignment
+|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - | - |
+| Mass Assignment | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/mass-assignment) |
+| Insecure Direct Object References (IDOR) | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/insecure-direct-object-reference) |
+| Local File Inclusion (LFI) | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/local-file-inclusion) |
+| Object Level Authorization (OLA) | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/object-level-authorization) |
 
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/mass-assignment) |
+### 3.2 A02:2021 - Cryptographic Failures
 
-#### 3.1.2 Insecure Direct Object References (IDOR)
+|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - | - |
+| Weak Encoding for Password | ✅ | ❌ | - |
+| Use of Hard-Coded Cryptographic Key | ✅ | ❌ | - |
+| Cleartext Transmission of Sensitive Information | ✅ | ❌ | - |
 
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/insecure-direct-object-reference) |
+### 3.3 A03:2021 - Injection
 
-#### 3.1.3 Local File Inclusion (LFI)
+|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - | - |
+| Remote Code Execution (RCE) | ✅ | ✅ | - |
+| Cross-Site Scripting (XSS) | ✅ | ✅ | - |
+| Cross-Site Request Forgery (CSRF) | ✅ | ✅ | - |
+| SQL Injection (SQLi) | ✅ | ✅ | - |
 
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/local-file-inclusion) |
+### 3.4 A04:2021 - Insecure Design
 
-#### 3.1.4 Object Level Authorization (OLA)
+|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - | - |
+| Open Redirect | ✅ | ✅ | - |
+| Regex Denial of Service (ReDoS) | ✅ | ✅ | - |
+| Login Rate Limiting | ✅ | ✅ | - |
 
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/object-level-authorization) |
+### 3.5 A05:2021 - Security Misconfiguration
 
-### 3.2 A02:2021-Cryptographic Failures
+|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - | - |
+| Token / Cookie Misconfiguration | ✅ | ✅ | - |
+| XML DDoS | ✅ | ❌ | - |
+| TLS Force / HSTS | ✅ | ❌ | - |
+| Debug Mode | ✅ | ❌ | - |
 
-#### 3.2.1 Weak Encoding for Password
+### 3.6 A06:2021 - Vulnerable and Outdated Components
 
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ❌ | - |
+|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - | - |
+| Static Analysis on CI/CD on GitHub | ✅ | ✅ | - |
 
-#### 3.2.2 Use of Hard-Coded Cryptographic Key
+### 3.7 A09:2021 - Security Logging and Monitoring Failures
 
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ❌ | - |
+|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - | - |
+| Enable Logging | ✅ | ✅ | - |
+| Logging Sensitive Information | ✅ | ✅ | - |
+| No Log to User | ✅ | ✅ | - |
 
-#### 3.2.3 Cleartext Transmission of Sensitive Information
+### 3.8 A10:2021 - Server-Side Request Forgery
 
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ❌ | - |
-
-### 3.3 A03:2021-Injection
-
-#### 3.3.1 Remote Code Execution (RCE)
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ✅ | - |
-
-#### 3.3.2 Cross-Site Scripting (XSS)
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ✅ | - |
-
-#### 3.3.3 Cross-Site Request Forgery (CSRF)
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ✅ | - |
-
-#### 3.3.4 SQL Injection (SQLi)
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ✅ | - |
-
-### 3.4 A04:2021-Insecure Design
-
-#### 3.4.1 Open Redirect
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ✅ | - |
-
-#### 3.4.2 Regex Denial of Service (ReDoS)
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ✅ | - |
-
-#### 3.4.3 Login Rate Limiting
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ✅ | - |
-
-### 3.5 A05:2021-Security Misconfiguration
-
-#### 3.5.1 Token / Cookie Misconfiguration
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ✅ | - |
-
-#### 3.5.2 XML DDoS
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ❌ | - |
-
-#### 3.5.3 TLS Force / HSTS
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ❌ | - |
-
-#### 3.5.4 Debug Mode
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ❌ | - |
-
-### 3.6 A06:2021-Vulnerable and Outdated Components
-
-#### 3.6.1 Static Analysis on CI/CD
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ✅ | - |
-
-### 3.7 A09:2021-Security Logging and Monitoring Failures
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ❌ | - |
-
-#### 3.7.1 Enable Logging
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ❌ | - |
-
-#### 3.7.2 Logging Sensitive Information
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ❌ | - |
-
-#### 3.7.3 No Log to User
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ❌ | - |
-
-### 3.8 A10:2021-Server-Side Request Forgery
-
-| Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - |
-| ✅ | ❌ | - |
-
+|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - | - |
+| Server-Side Request Forgery | ✅ | ❌ | - |
 
 ## Tworzenie nowej aplikacji Rails
 
