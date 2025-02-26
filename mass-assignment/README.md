@@ -1,17 +1,15 @@
 # Mass Assignment
 
-Aby uruchomić aplikację, wykonaj następującą komendę:
-```bash
-docker compose up
-```
+Uruchomienie przykładowej aplikacji dla tej podatności:
 
-Zatrzymanie aplikacji odbywa się za pomocą:
 ```bash
+# Aby uruchomić aplikację, wykonaj następującą komendę:
+docker compose up -d
+
+# Zatrzymanie aplikacji odbywa się za pomocą:
 docker compose down
-```
 
-W celu rozpoczęcia pracy od nowa (usunięcia wszystkich danych) użyj:
-```bash
+# W celu rozpoczęcia pracy od nowa (usunięcia wszystkich danych) użyj:
 docker compose restart
 ```
 
