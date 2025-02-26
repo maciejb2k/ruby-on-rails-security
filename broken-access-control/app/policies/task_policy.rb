@@ -1,11 +1,4 @@
-class TaskPolicy
-  attr_reader :user, :task
-
-  def initialize(user, task)
-    @user = user
-    @task = task
-  end
-
+class TaskPolicy < ApplicationPolicy
   def show?
     task.user == user
   end
@@ -19,7 +12,7 @@ class TaskPolicy
   end
 
   def destroy?
-    true
+    task.user == user
   end
 
   class Scope
