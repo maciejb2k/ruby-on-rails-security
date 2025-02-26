@@ -23,7 +23,6 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 - Przykład: https://github.com/maciejb2k/ruby-on-rails-security/tree/main/object-level-authorization
 
 ### 3.2 A02:2021-Cryptographic Failures
-- Przykład: -
 
 #### 3.2.1 Weak Encoding for Password
 - Przykład: -
@@ -35,7 +34,6 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 - Przykład: -
 
 ### 3.3 A03:2021-Injection
-- Przykład: -
 
 #### 3.3.1 Remote Code Execution (RCE)
 - Przykład: -
@@ -50,7 +48,6 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 - Przykład: -
 
 ### 3.4 A04:2021-Insecure Design
-- Przykład: -
 
 #### 3.4.1 Open Redirect
 - Przykład: -
@@ -62,7 +59,6 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 - Przykład: -
 
 ### 3.5 A05:2021-Security Misconfiguration
-- Przykład: -
 
 #### 3.5.1 Token / Cookie Misconfiguration
 - Przykład: -
@@ -77,7 +73,6 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 - Przykład: -
 
 ### 3.6 A06:2021-Vulnerable and Outdated Components
-- Przykład: -
 
 #### 3.6.1 Static Analysis on CI/CD
 - Przykład: -
