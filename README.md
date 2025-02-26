@@ -1,3 +1,9 @@
+<style>
+    table {
+        width: 100%;
+    }
+</style>
+
 # Ruby on Rails Security
 
 To repozytorium stanowi część mojej pracy magisterskiej z Informatyki na Uniwersytecie Rzeszowskim i koncentruje się na bezpieczeństwie aplikacji webowych w Ruby on Rails zgodnie z listą OWASP Top 10 (2021).
