@@ -17,10 +17,10 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 - Przykład: https://github.com/maciejb2k/ruby-on-rails-security/tree/main/insecure-direct-object-reference
 
 #### 3.1.3 Local File Inclusion (LFI)
-- Przykład: -
+- Przykład: https://github.com/maciejb2k/ruby-on-rails-security/tree/main/local-file-inclusion
 
 #### 3.1.4 Object Access Middleware
-- Przykład: https://github.com/maciejb2k/ruby-on-rails-security/tree/main/insecure-direct-object-reference
+- Przykład: https://github.com/maciejb2k/ruby-on-rails-security/tree/main/object-access-middleware
 
 ### 3.2 A02:2021-Cryptographic Failures
 - Przykład: -
