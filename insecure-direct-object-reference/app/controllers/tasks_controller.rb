@@ -10,7 +10,11 @@ class TasksController < ApplicationController
     @task = current_user.tasks.build
   end
 
-  def show; end
+  def show
+    @task = Task.find(params[:id])
+
+    render :show
+  end
 
   def secure_show
     @task = current_user.tasks.find_by(id: params[:id])
@@ -18,7 +22,7 @@ class TasksController < ApplicationController
     if @task
       render :show
     else
-      redirect_to tasks_path, alert: 'Not authorized to view this task.'
+      render :show, status: :forbidden
     end
   end
 
