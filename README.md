@@ -6,11 +6,11 @@ Projekt jest zorganizowany jako monorepozytorium zawierające serię małych apl
 
 Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zostać wykorzystana oraz jakie są jej konsekwencje. Następnie prezentuje poprawną, bezpieczną implementację, wraz z omówieniem technik zabezpieczeń i najlepszych praktyk.
 
-## Spis omawianych podatności
+## Spis omawianych podatności według OWASP Top 10 (2021)
 
 ### 3.1 A01:2021 - Broken Access Control
 
-|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
 | Mass Assignment | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/mass-assignment) |
 | Insecure Direct Object References (IDOR) | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/insecure-direct-object-reference) |
@@ -19,7 +19,7 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 
 ### 3.2 A02:2021 - Cryptographic Failures
 
-|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
 | Weak Encoding for Password | ✅ | ❌ | - |
 | Use of Hard-Coded Cryptographic Key | ✅ | ❌ | - |
@@ -27,7 +27,7 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 
 ### 3.3 A03:2021 - Injection
 
-|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
 | Remote Code Execution (RCE) | ✅ | ✅ | - |
 | Cross-Site Scripting (XSS) | ✅ | ✅ | - |
@@ -36,7 +36,7 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 
 ### 3.4 A04:2021 - Insecure Design
 
-|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
 | Open Redirect | ✅ | ✅ | - |
 | Regex Denial of Service (ReDoS) | ✅ | ✅ | - |
@@ -44,7 +44,7 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 
 ### 3.5 A05:2021 - Security Misconfiguration
 
-|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
 | Token / Cookie Misconfiguration | ✅ | ✅ | - |
 | XML DDoS | ✅ | ❌ | - |
@@ -53,13 +53,13 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 
 ### 3.6 A06:2021 - Vulnerable and Outdated Components
 
-|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
 | Static Analysis on CI/CD on GitHub | ✅ | ✅ | - |
 
 ### 3.7 A09:2021 - Security Logging and Monitoring Failures
 
-|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
 | Enable Logging | ✅ | ✅ | - |
 | Logging Sensitive Information | ✅ | ✅ | - |
@@ -67,7 +67,7 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 
 ### 3.8 A10:2021 - Server-Side Request Forgery
 
-|Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
+| Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
 | Server-Side Request Forgery | ✅ | ❌ | - |
 
