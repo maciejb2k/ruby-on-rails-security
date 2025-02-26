@@ -12,207 +12,158 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 
 #### 3.1.1 Mass Assignment
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ✅ |
-
-Link: https://github.com/maciejb2k/ruby-on-rails-security/tree/main/mass-assignment
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/mass-assignment) |
 
 #### 3.1.2 Insecure Direct Object References (IDOR)
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ✅ |
-
-Link: https://github.com/maciejb2k/ruby-on-rails-security/tree/main/insecure-direct-object-reference
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/insecure-direct-object-reference) |
 
 #### 3.1.3 Local File Inclusion (LFI)
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ✅ |
-
-Link: https://github.com/maciejb2k/ruby-on-rails-security/tree/main/local-file-inclusion
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/local-file-inclusion) |
 
 #### 3.1.4 Object Level Authorization (OLA)
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ✅ |
-
-Link: https://github.com/maciejb2k/ruby-on-rails-security/tree/main/object-level-authorization
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/object-level-authorization) |
 
 ### 3.2 A02:2021-Cryptographic Failures
 
 #### 3.2.1 Weak Encoding for Password
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ❌ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ❌ | - |
 
 #### 3.2.2 Use of Hard-Coded Cryptographic Key
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ❌ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ❌ | - |
 
 #### 3.2.3 Cleartext Transmission of Sensitive Information
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ❌ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ❌ | - |
 
 ### 3.3 A03:2021-Injection
 
 #### 3.3.1 Remote Code Execution (RCE)
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ✅ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ✅ | - |
 
 #### 3.3.2 Cross-Site Scripting (XSS)
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ✅ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ✅ | - |
 
 #### 3.3.3 Cross-Site Request Forgery (CSRF)
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ✅ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ✅ | - |
 
 #### 3.3.4 SQL Injection (SQLi)
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ✅ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ✅ | - |
 
 ### 3.4 A04:2021-Insecure Design
 
 #### 3.4.1 Open Redirect
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ✅ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ✅ | - |
 
 #### 3.4.2 Regex Denial of Service (ReDoS)
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ✅ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ✅ | - |
 
 #### 3.4.3 Login Rate Limiting
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ✅ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ✅ | - |
 
 ### 3.5 A05:2021-Security Misconfiguration
 
 #### 3.5.1 Token / Cookie Misconfiguration
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ✅ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ✅ | - |
 
 #### 3.5.2 XML DDoS
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ❌ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ❌ | - |
 
 #### 3.5.3 TLS Force / HSTS
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ❌ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ❌ | - |
 
 #### 3.5.4 Debug Mode
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ❌ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ❌ | - |
 
 ### 3.6 A06:2021-Vulnerable and Outdated Components
 
 #### 3.6.1 Static Analysis on CI/CD
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ❌ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ✅ | - |
 
 ### 3.7 A09:2021-Security Logging and Monitoring Failures
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ❌ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ❌ | - |
 
 #### 3.7.1 Enable Logging
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ❌ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ❌ | - |
 
 #### 3.7.2 Logging Sensitive Information
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ❌ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ❌ | - |
 
 #### 3.7.3 No Log to User
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ❌ |
-
-Link: -
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ❌ | - |
 
 ### 3.8 A10:2021-Server-Side Request Forgery
 
-| Opis podatności | Aplikacja z przykładem |
-| - | - |
-| ✅ | ❌ |
+| Opis podatności | Aplikacja z przykładem | Link |
+| - | - | - |
+| ✅ | ❌ | - |
 
-Link: -
-
----
 
 ## Tworzenie nowej aplikacji Rails
 
