@@ -1,17 +1,8 @@
 # Insecure Direct Object Reference
 
-Uruchomienie przykładowej aplikacji dla tej podatności:
+Aplikacja dla tego przykładu znajduje się w katalogu `app-idor-ola`.
 
-```bash
-# Aby uruchomić aplikację, wykonaj następującą komendę:
-docker compose up -d
-
-# Zatrzymanie aplikacji odbywa się za pomocą:
-docker compose down
-
-# W celu rozpoczęcia pracy od nowa (usunięcia wszystkich danych) użyj:
-docker compose restart
-```
+https://github.com/maciejb2k/ruby-on-rails-security/tree/main/app-idor-ola
 
 ## Przykład
 
@@ -30,6 +21,8 @@ Po zalogowaniu się jako użytkownik `maciek@example.com`, możemy zobaczyć lis
 ![](./screenshots/maciek-tasks.png)
 
 Gdy wejdziemy w szczegóły zadania, widzimy, że należy ono na pewno do zalogowanego użytkownika i ma ono `id=1`.
+
+![](./screenshots/maciek-show-task.png)
 
 Co gdybyśmy spróbowali zmienić `id` zadania w adresie URL na `6`?
 
@@ -61,34 +54,6 @@ def secure_show
 end
 ```
 
-W naszej aplikacji, gdybyśmy chcieli otrzymać dostęp do tego zasobu z użyciem metody `secure_show`, otrzymamy status '403 Forbidden':
+W naszej aplikacji, gdybyśmy chcieli otrzymać dostęp do tego zasobu z użyciem metody `secure_show`, otrzymamy status '404 Not Found':
 
 ![](./screenshots/maciek-show-task-secure.png)
-
-Najlepszą praktyką w przypadku zarządzania dostepem do zasobów i autoryzacją jest korzystanie z bibliotek takich jak `Pundit`, które oferują bardziej rozbudowane mechanizmy autoryzacji np. za pomocą tzw. klas `policy`.
-
-Przykład takiej klasy:
-```ruby
-class TaskPolicy
-  ...
-
-  def show?
-    task.user == user
-  end
-
-  ...
-end
-```
-
-Przykład zastosowania klasy `TaskPolicy` w kontrolerze:
-```ruby
-def secure_show_pundit
-  @task = Task.find(params[:id])
-  authorize @task
-  render :show
-end
-```
-
-Wywołanie metody `authorize` sprawdza, czy użytkownik ma dostęp do zasobu. W przypadku braku dostępu, zwracany jest status '403 Forbidden'.
-
-![](./screenshots/maciek-show-task-secure-pundit.png)

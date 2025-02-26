@@ -19,7 +19,7 @@ class TaskPolicy
   end
 
   def destroy?
-    task.user == user
+    true
   end
 
   class Scope

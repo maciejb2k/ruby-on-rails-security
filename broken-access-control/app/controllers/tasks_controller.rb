@@ -17,13 +17,9 @@ class TasksController < ApplicationController
   end
 
   def secure_show
-    @task = current_user.tasks.find_by(id: params[:id])
+    @task = current_user.tasks.find(params[:id])
 
-    if @task
-      render :show
-    else
-      render :show, status: :forbidden
-    end
+    render :show
   end
 
   def secure_show_pundit
