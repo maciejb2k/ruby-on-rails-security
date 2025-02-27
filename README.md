@@ -31,8 +31,8 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 
 | Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
-| Weak Encoding for Password | ✅ | ❌ | - |
-| Use of Hard-Coded Cryptographic Key | ✅ | ❌ | - |
+| Weak Encoding for Password | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/weak-encoding-for-password) |
+| Use of Hard-Coded Cryptographic Key | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/hard-coded-cryptographic-key) |
 | Cleartext Transmission of Sensitive Information | ✅ | ❌ | - |
 
 ### 3.3 A03:2021 - Injection
