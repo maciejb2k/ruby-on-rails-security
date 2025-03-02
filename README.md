@@ -39,7 +39,7 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 
 | Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
-| Remote Code Execution (RCE) | ✅ | ✅ | - |
+| Remote Code Execution (RCE) | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/remote-code-execution) |
 | Cross-Site Scripting (XSS) | ✅ | ✅ | - |
 | Cross-Site Request Forgery (CSRF) | ✅ | ✅ | - |
 | SQL Injection (SQLi) | ✅ | ✅ | - |
