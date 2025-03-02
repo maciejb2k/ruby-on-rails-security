@@ -1,0 +1,72 @@
+<% content_for :title, "Showing post" %>
+
+<div class="md:w-2/3 w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <%= render @post %>
+
+  <%= link_to "Edit this post", edit_post_path(@post), class: "mt-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <%= link_to "Back to posts", posts_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <div class="inline-block ml-2">
+    <%= button_to "Destroy this post", @post, method: :delete, class: "mt-2 rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+  </div>
+
+  <div class="mt-8">
+    <h2 class="text-2xl font-semibold mb-4">Comments section</h2>
+
+    <% if @post.comments.any? %>
+      <% @post.comments.each do |comment| %>
+        <div class="border border-gray-200 rounded-md p-4 mb-3">
+          <p><span class="font-semibold"><%= comment.nickname %></span> <span class="text-gray-500 italic">(<%= comment.created_at.strftime("%H:%M, %d-%m-%Y") %>)</span></p>
+          <p class="text-gray-700"><%= raw comment.content %></p>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-gray-500">No comments yet.</p>
+    <% end %>
+</div>
+
+<div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+  <!-- Lewa kolumna: Formularz dodawania komentarza -->
+  <div class="p-4 border border-gray-300 rounded-md bg-gray-50">
+    <h3 class="text-lg font-semibold mb-3">Add comment</h3>
+
+    <%= form_with(model: [@post, Comment.new], local: true) do |form| %>
+      <div class="mb-2">
+        <%= form.label :nickname, "Your username:", class: "block font-medium" %>
+        <%= form.text_field :nickname, id: "nickname", class: "border bg-white border-gray-400 p-2 w-full rounded-md" %>
+      </div>
+      <div class="mb-2">
+        <%= form.label :content, "Content:", class: "block font-medium" %>
+        <%= form.text_area :content, id: "comment-content", class: "border bg-white border-gray-400 p-2 w-full rounded-md" %>
+      </div>
+      <%= form.submit "Submit comment", class: "bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 cursor-pointer" %>
+    <% end %>
+  </div>
+
+  <!-- Prawa kolumna: Podgląd komentarza -->
+  <div class="p-4 border border-gray-200 bg-gray-100 rounded-md">
+    <h3 class="text-lg font-semibold mb-2">Comment Preview:</h3>
+
+    <div class="border border-gray-300 p-4 rounded-md bg-white">
+      <p class="text-sm text-gray-500">Your username:</p>
+      <p id="live-preview-username" class="font-semibold text-gray-800 mb-2">Anonymous</p>
+
+      <p class="text-sm text-gray-500">Comment content:</p>
+      <p id="live-preview-content" class="text-gray-700 break-word">-</p>
+    </div>
+  </div>
+</div>
+
+<!-- PODATNOŚĆ: Manipulacja innerHTML -->
+<script>
+  document.getElementById("nickname").addEventListener("input", function() {
+    document.getElementById("live-preview-username").innerHTML = this.value || "Anonymous";
+  });
+
+  document.getElementById("comment-content").addEventListener("input", function() {
+    document.getElementById("live-preview-content").innerHTML = this.value || "-"
+  });
+</script>
