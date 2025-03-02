@@ -1,0 +1,2 @@
+class SafeArticle < ApplicationRecord
+end

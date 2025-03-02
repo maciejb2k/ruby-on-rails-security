@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CSRF Attack Simulation</title>
+</head>
+<body>
+  <h1>CSRF Attack Demonstration</h1>
+  <p>
+    Na tej stronie są dwa formularze:
+    <ul>
+      <li><strong>UnsafeArticles</strong> – brak weryfikacji tokenu CSRF (atak się powiedzie)</li>
+      <li><strong>SafeArticles</strong> – włączona weryfikacja CSRF (atak powinien się nie udać)</li>
+    </ul>
+  </p>
+
+  <hr>
+  <h2>1. Utworzenie <em>UnsafeArticle</em> (CSRF protection wyłączone)</h2>
+  <form action="http://localhost:3000/unsafe_articles" method="post">
+    <input type="hidden" name="unsafe_article[title]" value="Hacked Title from attacker site" />
+    <input type="hidden" name="unsafe_article[content]" value="CSRF from another domain" />
+    <button type="submit">Utwórz nowy artykuł (Unsafe)</button>
+  </form>
+  <p>
+    <em>Jeśli kontroler <code>UnsafeArticlesController</code> ma
+    <code>skip_before_action :verify_authenticity_token</code>, to atak się uda.</em>
+  </p>
+
+  <hr>
+  <h2>2. Utworzenie <em>SafeArticle</em> (CSRF protection włączone)</h2>
+  <form action="http://localhost:3000/safe_articles" method="post">
+    <input type="hidden" name="safe_article[title]" value="Failed Title from attacker site" />
+    <input type="hidden" name="safe_article[content]" value="CSRF from another domain" />
+    <button type="submit">Utwórz nowy artykuł (Safe)</button>
+  </form>
+  <p>
+    <em>W tym przypadku Rails powinien odrzucić żądanie
+    z błędem <code>InvalidAuthenticityToken</code>, bo brakuje poprawnego tokenu CSRF.</em>
+  </p>
+
+</body>
+</html>

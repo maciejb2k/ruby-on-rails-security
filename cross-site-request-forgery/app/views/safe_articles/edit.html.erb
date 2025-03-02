@@ -1,0 +1,10 @@
+<% content_for :title, "Editing safe article" %>
+
+<div class="md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">Editing safe article</h1>
+
+  <%= render "form", safe_article: @safe_article %>
+
+  <%= link_to "Show this safe article", @safe_article, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <%= link_to "Back to safe articles", safe_articles_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+</div>

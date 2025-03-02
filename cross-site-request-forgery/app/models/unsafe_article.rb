@@ -1,0 +1,2 @@
+class UnsafeArticle < ApplicationRecord
+end
