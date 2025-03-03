@@ -1,0 +1,27 @@
+<!-- app/views/injections/index.html.erb -->
+<h1 class="text-2xl font-bold mb-6">Demonstracja możliwych SQL Injection w Rails</h1>
+
+<p class="mb-4">
+  Poniżej znajdziesz listę przykładowych metod Active Record, dla których zaprezentowano
+  sposób na potencjalny SQL Injection. Kliknij w wybraną metodę, wypełnij formularz
+  i zobacz, jakie finalnie wygenerowano zapytanie oraz jaki był wynik.
+</p>
+
+<ul class="list-disc ml-5">
+  <li><%= link_to "Calculation (Order.calculate)", injections_calculation_path %></li>
+  <li><%= link_to "Delete By (User.delete_by)", injections_delete_by_path %></li>
+  <li><%= link_to "Destroy By (User.destroy_by)", injections_destroy_by_path %></li>
+  <li><%= link_to "Exists? (User.exists?)", injections_exists_path %></li>
+  <li><%= link_to "Find By (User.find_by)", injections_find_by_path %></li>
+  <li><%= link_to "From (User.from(...))", injections_from_path %></li>
+  <li><%= link_to "Group (User.where(...).group(...))", injections_group_path %></li>
+  <li><%= link_to "Having (Order.where(...).group(...).having(...))", injections_having_path %></li>
+  <li><%= link_to "Joins (Order.joins(...))", injections_joins_path %></li>
+  <li><%= link_to "Lock (User.where(...).lock(...))", injections_lock_path %></li>
+  <li><%= link_to "Not (User.where.not(...))", injections_not_path %></li>
+  <li><%= link_to "Select (User.select(...))", injections_select_path %></li>
+  <li><%= link_to "Reselect (User.select(...).reselect(...))", injections_reselect_path %></li>
+  <li><%= link_to "Where (User.where(...))", injections_where_path %></li>
+  <li><%= link_to "Rewhere (User.where(...).rewhere(...))", injections_rewhere_path %></li>
+  <li><%= link_to "Update All (User.update_all(...))", injections_update_all_path %></li>
+</ul>

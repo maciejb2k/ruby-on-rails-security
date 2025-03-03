@@ -1,0 +1,62 @@
+<h2 class="text-xl font-semibold ">Rails SQLi: Calculations</h2>
+
+<p class="mb-8">
+  <%= link_to "Powrót do listy", root_path, class: "underline text-blue-600" %>
+</p>
+
+<section class="mb-6">
+  <h3 class="text-lg font-bold mb-2">Kod metody:</h3>
+  <pre class="bg-gray-100 p-2">
+Order.calculate(:sum, params[:column])</pre>
+</section>
+
+<section class="mb-6">
+  <h3 class="text-lg font-bold mb-2">Przykłady użycia:</h3>
+  <ul class="list-disc ml-5 space-y-1">
+    <li><code>age) FROM users WHERE name = 'Bob'; --</code></li>
+    <li><code>total) FROM orders WHERE total &gt; 100; --</code></li>
+    <li><code>id) FROM users; DROP TABLE users; --</code></li>
+  </ul>
+</section>
+
+<section class="mb-6">
+  <h3 class="text-lg font-bold mb-2">Parametr <code>column</code></h3>
+  <%= form_with url: injections_calculation_path, method: :post, local: true, class: "space-y-4" do %>
+    <div>
+      <%= label_tag :column, "Wprowadź wartość:", class: "block font-medium mb-1" %>
+      <%= text_field_tag :column, params[:column], class: "border px-2 py-1 w-full" %>
+    </div>
+    <%= submit_tag "Wyślij", class: "bg-blue-600 text-white px-3 py-1 rounded" %>
+  <% end %>
+</section>
+
+<% if @error.present? %>
+  <div class="bg-red-200 text-red-800 p-2 rounded mb-4">
+    <strong>Błąd:</strong> 
+    <p><%= @error %></p>
+  </div>
+<% end %>
+
+<% if @queries.any? %>
+  <div class="mb-4">
+    <h4 class="font-bold mb-2">Wygenerowane zapytania SQL:</h4>
+    <ul class="list-disc ml-5 space-y-1">
+      <% @queries.each do |q| %>
+        <li><code><%= q %></code></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div>
+  <h4 class="font-bold mb-2">Wynik (result):</h4>
+  <% if @result.present? %>
+    <p class="bg-gray-50 p-2 border rounded">
+      <%= @result.inspect %>
+    </p>
+  <% else %>
+    <div class="text-gray-500 italic">
+      Brak dostępnych wyników.
+    </div>
+  <% end %>
+</div>
