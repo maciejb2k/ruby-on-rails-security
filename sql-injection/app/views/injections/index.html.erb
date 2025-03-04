@@ -1,27 +1,49 @@
-<!-- app/views/injections/index.html.erb -->
-<h1 class="text-2xl font-bold mb-6">Demonstracja możliwych SQL Injection w Rails</h1>
+<div class="max-w-5xl mx-auto p-6">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Demonstracja SQL Injection w Ruby on Rails</h1>
 
-<p class="mb-4">
-  Poniżej znajdziesz listę przykładowych metod Active Record, dla których zaprezentowano
-  sposób na potencjalny SQL Injection. Kliknij w wybraną metodę, wypełnij formularz
-  i zobacz, jakie finalnie wygenerowano zapytanie oraz jaki był wynik.
-</p>
+  <p class="text-gray-700 mb-4 text-center">
+    Poniżej znajdziesz listę metod Active Record, które mogą być podatne na SQL Injection. Kliknij wybraną metodę, aby zobaczyć wygenerowane zapytanie SQL i wynik.
+  </p>
 
-<ul class="list-disc ml-5">
-  <li><%= link_to "Calculation (Order.calculate)", injections_calculation_path %></li>
-  <li><%= link_to "Delete By (User.delete_by)", injections_delete_by_path %></li>
-  <li><%= link_to "Destroy By (User.destroy_by)", injections_destroy_by_path %></li>
-  <li><%= link_to "Exists? (User.exists?)", injections_exists_path %></li>
-  <li><%= link_to "Find By (User.find_by)", injections_find_by_path %></li>
-  <li><%= link_to "From (User.from(...))", injections_from_path %></li>
-  <li><%= link_to "Group (User.where(...).group(...))", injections_group_path %></li>
-  <li><%= link_to "Having (Order.where(...).group(...).having(...))", injections_having_path %></li>
-  <li><%= link_to "Joins (Order.joins(...))", injections_joins_path %></li>
-  <li><%= link_to "Lock (User.where(...).lock(...))", injections_lock_path %></li>
-  <li><%= link_to "Not (User.where.not(...))", injections_not_path %></li>
-  <li><%= link_to "Select (User.select(...))", injections_select_path %></li>
-  <li><%= link_to "Reselect (User.select(...).reselect(...))", injections_reselect_path %></li>
-  <li><%= link_to "Where (User.where(...))", injections_where_path %></li>
-  <li><%= link_to "Rewhere (User.where(...).rewhere(...))", injections_rewhere_path %></li>
-  <li><%= link_to "Update All (User.update_all(...))", injections_update_all_path %></li>
-</ul>
+  <p class="text-gray-600 text-center mb-6">
+    Przykłady podatności pochodzą ze strony:
+    <a href="https://rails-sqli.org/" class="text-sky-600 font-semibold underline">https://rails-sqli.org/</a>
+  </p>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-gray-100 rounded-lg shadow-md">
+      <thead>
+        <tr class="bg-gray-200 text-gray-700 text-left">
+          <th class="py-3 px-4">Rodzaj</th>
+          <th class="py-3 px-4">Kod</th>
+          <th class="py-3 px-4">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% [
+          ["Calculation", "Order.calculate", injections_calculation_path],
+          ["Delete By", "User.delete_by", injections_delete_by_path],
+          ["Destroy By", "User.destroy_by", injections_destroy_by_path],
+          ["Exists?", "User.exists?", injections_exists_path],
+          ["Find By", "User.find_by", injections_find_by_path],
+          ["From", "User.from(...)", injections_from_path],
+          ["Group", "User.where(...).group(...)", injections_group_path],
+          ["Having", "Order.where(...).group(...).having(...)", injections_having_path],
+          ["Joins", "Order.joins(...)", injections_joins_path],
+          ["Not", "User.where.not(...)", injections_not_path],
+          ["Select", "User.select(...)", injections_select_path],
+          ["Where", "User.where(...)", injections_where_path],
+          ["Update All", "User.update_all(...)", injections_update_all_path]
+        ].each do |type, code, path| %>
+          <tr class="border-b border-gray-300 hover:bg-gray-200">
+            <td class="py-3 px-4 text-gray-800 font-medium"><%= type %></td>
+            <td class="py-3 px-4 font-mono text-gray-700"><%= code %></td>
+            <td class="py-3 px-4">
+              <a href="<%= path %>" class="text-blue-500 hover:underline">Zobacz</a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

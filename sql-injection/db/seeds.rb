@@ -1,3 +1,9 @@
+Order.destroy_all
+User.destroy_all
+
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
+ActiveRecord::Base.connection.reset_pk_sequence!('orders')
+
 u1 = User.create!(
   name: 'Alice',
   password: 'alice123',

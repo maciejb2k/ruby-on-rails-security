@@ -1,4 +1,3 @@
-# app/controllers/injections_controller.rb
 class InjectionsController < ApplicationController
   ##
   # 1. Calculation method
@@ -181,7 +180,7 @@ class InjectionsController < ApplicationController
     @total = params[:total]
     begin
       @queries = capture_sql do
-        @result = Order.where(user_id: 1).group(:user_id).having("total > #{@total}").to_a
+        @result = Order.where(user_id: 1).group(:id, :user_id).having("total > #{@total}").to_a
       end
     rescue StandardError => e
       @error = e.message
@@ -203,7 +202,7 @@ class InjectionsController < ApplicationController
     @table_param = params[:table_param]
     begin
       @queries = capture_sql do
-        @result = Order.joins(@table_param).where('total > 1000').to_a
+        @result = Order.joins(@table_param).where('total > 100').to_a
       end
     rescue StandardError => e
       @error = e.message
@@ -247,7 +246,7 @@ class InjectionsController < ApplicationController
     @excluded = params[:excluded]
     begin
       @queries = capture_sql do
-        @result = User.where.not("admin = 1 OR id IN (#{@excluded})").to_a
+        @result = User.where.not("admin = true OR id IN (#{@excluded})").to_a
       end
     rescue StandardError => e
       @error = e.message
@@ -358,11 +357,22 @@ class InjectionsController < ApplicationController
     @name = params[:name]
     begin
       @queries = capture_sql do
-        @result = User.update_all("admin = 1 WHERE name LIKE '%#{@name}%'")
+        @result = User.update_all("admin = true WHERE name LIKE '%#{@name}%'")
       end
     rescue StandardError => e
       @error = e.message
     end
+  end
+
+  def reset_db
+    begin
+      Rails.application.load_seed
+      flash[:notice] = "Baza danych została ponownie zainicjalizowana."
+    rescue StandardError => e
+      flash[:alert] = "Błąd podczas seedowania: #{e.message}"
+    end
+
+    redirect_back fallback_location: root_path
   end
 
   private

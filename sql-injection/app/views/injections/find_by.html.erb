@@ -1,4 +1,4 @@
-<h2 class="text-xl font-semibold">Rails SQLi: Calculation</h2>
+<h2 class="text-xl font-semibold">Rails SQLi: Find By</h2>
 
 <div class="flex mb-4 items-center gap-3">
   <%= link_to "Powrót do listy", root_path, class: "underline text-blue-600" %>
@@ -21,25 +21,24 @@
 <section class="mb-6">
   <h3 class="text-lg font-bold mb-2">Kod metody:</h3>
   <pre class="bg-gray-100 p-2">
-Order.calculate(:sum, params[:column])</pre>
+User.find_by(params[:id_param])</pre>
 </section>
 
 <section class="mb-6">
   <h3 class="text-lg font-bold mb-2">Przykłady użycia:</h3>
   <ul class="list-disc ml-5 space-y-1">
-    <li><code class="bg-gray-100 p-1">total</code></li>
-    <li><code class="bg-gray-100 p-1">age) FROM users WHERE name = 'Bob'; --</code></li>
-    <li><code class="bg-gray-100 p-1">total) FROM orders WHERE total &gt; 100; --</code></li>
-    <li><code class="bg-gray-100 p-1">id) FROM users; DROP TABLE users; --</code></li>
+    <li><code class="bg-gray-100 p-1">name = 'Eve'</code></li>
+    <li><code class="bg-gray-100 p-1">admin = '1'</code></li>
+    <li><code class="bg-gray-100 p-1">id = 1 OR 1=1</code></li>
   </ul>
 </section>
 
 <section class="mb-6">
-  <h3 class="text-lg font-bold mb-2">Parametr <code>column</code></h3>
-  <%= form_with url: injections_calculation_path, method: :post, local: true, class: "space-y-4" do %>
+  <h3 class="text-lg font-bold mb-2">Parametr <code>id_param</code></h3>
+  <%= form_with url: injections_find_by_path, method: :post, local: true, class: "space-y-4" do %>
     <div>
-      <%= label_tag :column, "Wprowadź wartość:", class: "block font-medium mb-1" %>
-      <%= text_field_tag :column, params[:column], class: "border px-2 py-1 w-full" %>
+      <%= label_tag :id_param, "Wprowadź wartość:", class: "block font-medium mb-1" %>
+      <%= text_field_tag :id_param, params[:id_param], class: "border px-2 py-1 w-full" %>
     </div>
     <%= submit_tag "Wyślij", class: "bg-blue-600 text-white px-3 py-1 rounded" %>
   <% end %>

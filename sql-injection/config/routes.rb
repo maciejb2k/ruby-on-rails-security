@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'injections#index'
 
+  post 'reset_db', to: 'injections#reset_db', as: 'reset_db'
+
   # Dla każdej "metody" (akcja + widok) mamy:
   get  'injections/calculation'
   post 'injections/calculation'
