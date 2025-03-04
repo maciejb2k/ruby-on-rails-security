@@ -1,9 +1,13 @@
 # SQL Injection (SQLi)
 
-## Opis
+```bash
+# Aby uruchomić aplikację, wykonaj następującą komendę:
+docker compose up -d
 
-## Przykład
+# Zatrzymanie aplikacji odbywa się za pomocą:
+docker compose down
 
-## Skutki
+# W celu rozpoczęcia pracy od nowa (usunięcia wszystkich danych) użyj:
+docker compose restart
+```
 
-## Zalecenia
