@@ -1,4 +1,4 @@
-# sql-injection
+# SQL Injection (SQLi)
 
 ## Opis
 

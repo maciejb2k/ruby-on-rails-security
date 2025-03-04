@@ -42,7 +42,7 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 | Remote Code Execution (RCE) | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/remote-code-execution) |
 | Cross-Site Scripting (XSS) | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/cross-site-scripting) |
 | Cross-Site Request Forgery (CSRF) | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/cross-site-request-forgery) |
-| SQL Injection (SQLi) | ✅ | ✅ | - |
+| SQL Injection (SQLi) | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/sql-injection) |
 
 ### 3.4 A04:2021 - Insecure Design
 
