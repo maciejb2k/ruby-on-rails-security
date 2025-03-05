@@ -1,5 +1,9 @@
 # SQL Injection (SQLi)
 
+Źródło: https://rails-sqli.org/
+
+---
+
 ```bash
 # Aby uruchomić aplikację, wykonaj następującą komendę:
 docker compose up -d
