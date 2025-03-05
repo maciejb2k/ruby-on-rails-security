@@ -41,7 +41,7 @@ User.where("name = '#{params[:name]}' AND password = '#{params[:password]}'")</p
     </div>
     <div>
       <%= label_tag :password, "Hasło:", class: "block font-medium mb-1" %>
-      <%= password_field_tag :password, params[:password], class: "border px-2 py-1 w-full" %>
+      <%= text_field_tag :password, params[:password], class: "border px-2 py-1 w-full" %>
     </div>
     <%= submit_tag "Wyślij", class: "bg-blue-600 text-white px-3 py-1 rounded" %>
   <% end %>
