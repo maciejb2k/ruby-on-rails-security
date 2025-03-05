@@ -1,0 +1,29 @@
+<div class="flex justify-center items-center h-screen bg-gray-100">
+  <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold mb-4 text-center text-red-500">Fałszywa strona banku!</h1>
+
+    <% if flash[:alert].present? %>
+      <div class="bg-red-200 text-red-800 p-2 rounded mb-4 text-center"><%= flash[:alert] %></div>
+    <% end %>
+
+    <% if flash[:notice].present? %>
+      <div class="bg-green-200 text-green-800 p-2 rounded mb-4 text-center"><%= flash[:notice] %></div>
+    <% end %>
+
+    <p class="text-sm text-gray-600 mb-4">Podaj swoje dane, aby zalogować się.</p>
+
+    <%= form_with url: phishing_steal_path, method: :post, class: "space-y-4" do %>
+      <div>
+        <label class="block text-sm font-medium">E-mail</label>
+        <%= text_field_tag :email, nil, class: "w-full p-2 border rounded" %>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium">Hasło</label>
+        <%= password_field_tag :password, nil, class: "w-full p-2 border rounded" %>
+      </div>
+
+      <button class="w-full bg-red-500 text-white p-2 rounded hover:bg-red-600">Zaloguj</button>
+    <% end %>
+  </div>
+</div>

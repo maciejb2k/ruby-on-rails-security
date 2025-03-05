@@ -1,0 +1,29 @@
+<div class="flex justify-center items-center h-screen bg-gray-100">
+  <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold mb-4 text-center">Logowanie do Banku</h1>
+
+    <% if flash[:alert].present? %>
+      <div class="bg-red-200 text-red-800 p-2 rounded mb-4 text-center"><%= flash[:alert] %></div>
+    <% end %>
+
+    <% if flash[:notice].present? %>
+      <div class="bg-green-200 text-green-800 p-2 rounded mb-4 text-center"><%= flash[:notice] %></div>
+    <% end %>
+
+    <%= form_with url: login_path, method: :post, class: "space-y-4" do %>
+      <div>
+        <label class="block text-sm font-medium">E-mail</label>
+        <%= text_field_tag :email, "user1@mybank.com", class: "w-full p-2 border rounded" %>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium">Hasło</label>
+        <%= password_field_tag :password, "password", class: "w-full p-2 border rounded" %>
+      </div>
+
+      <%= hidden_field_tag :redirect_to, params[:redirect_to] %>
+
+      <button class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Zaloguj</button>
+    <% end %>
+  </div>
+</div>
