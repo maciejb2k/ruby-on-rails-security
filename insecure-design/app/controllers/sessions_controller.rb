@@ -1,29 +1,30 @@
 class SessionsController < ApplicationController
-  before_action :is_authenticated, only: %i[new create]
+  rate_limit to: 5, within: 1.minute, with: -> { redirect_to rate_limited_path }, only: %i[create]
 
-  def new; end
+  before_action :authenticated?, only: %i[new create]
 
-  # http://localhost:3000/login?redirect_to=http://localhost:3000/phishing-login
   def create
     user = User.find_by(email: params[:email])
 
-    if user && user.authenticate(params[:password])
+    if user&.authenticate(params[:password])
       session[:user_id] = user.id
+      session[:user_email] = user.email
       redirect_to params[:redirect_to] || dashboard_path
     else
-      flash[:alert] = 'Nieprawidłowy e-mail lub hasło'
+      flash[:alert] = 'Invalid email or password.'
       render :new
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to login_path, notice: 'Wylogowano.'
+    session[:user_email] = nil
+    redirect_to login_path, notice: 'Logged out successfully.'
   end
 
   private
 
-  def is_authenticated
+  def authenticated?
     redirect_to dashboard_path if session[:user_id]
   end
 end

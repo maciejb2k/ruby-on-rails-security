@@ -1,8 +1,13 @@
-<div class="flex flex-col items-center justify-center h-screen bg-gray-100">
-  <div class="bg-white p-6 rounded-lg shadow-lg">
-    <h1 class="text-2xl font-bold mb-4">Witaj w Bank</h1>
-    <p class="mb-4">Twoje konto bankowe jest bezpieczne.</p>
+<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-100 to-gray-300">
+  <div class="bg-white p-10 rounded-2xl shadow-2xl w-full max-w-2xl text-center">
+    <h1 class="text-3xl font-bold mb-4 text-gray-800">Welcome to the Bank</h1>
 
-    <%= button_to "Wyloguj", logout_path, method: :delete, class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" %>
+    <p class="text-lg text-gray-600 mb-6">
+      You are logged in as <span class="font-semibold text-gray-800"><%= session[:user_email] %></span>.
+    </p>
+
+    <p class="text-md text-gray-500 mb-6">Your bank account is secure.</p>
+
+    <%= button_to "Log out", logout_path, method: :delete, class: "bg-gray-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-gray-600 transition duration-300 ease-in-out transform hover:-translate-y-1" %>
   </div>
 </div>

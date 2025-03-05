@@ -50,7 +50,7 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 | - | - | - | - |
 | Open Redirect | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/open-redirect) |
 | Regex Denial of Service (ReDoS) | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/regex-dos) |
-| Login Rate Limiting | ✅ | ✅ | - |
+| Login Rate Limiting | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/login-rate-limiting) |
 
 ### 3.5 A05:2021 - Security Misconfiguration
 
