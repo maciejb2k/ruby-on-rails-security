@@ -56,7 +56,7 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 
 | Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
-| Token / Cookie Misconfiguration | ✅ | ✅ | - |
+| Token / Cookie Misconfiguration | ✅ | ❌ | - |
 | XML DDoS | ✅ | ❌ | - |
 | TLS Force / HSTS | ✅ | ❌ | - |
 | Debug Mode | ✅ | ❌ | - |

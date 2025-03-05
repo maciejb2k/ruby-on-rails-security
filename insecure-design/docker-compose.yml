@@ -13,7 +13,7 @@ services:
       - db
     stdin_open: true
     tty: true
-    command: bash -c "bin/rails db:create && bin/rails db:migrate && bin/rails db:schema:load && bin/rails db:seed && rm -f tmp/pids/server.pid && bin/dev"
+    command: bash -c "bin/rails db:create && bin/rails db:migrate && bin/rails db:schema:load && bin/rails db:seed && rm -f tmp/pids/server.pid && bin/rails dev:cache && bin/dev"
 
   db:
     image: postgres:16
