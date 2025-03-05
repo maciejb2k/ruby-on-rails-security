@@ -49,7 +49,7 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 | Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
 | Open Redirect | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/open-redirect) |
-| Regex Denial of Service (ReDoS) | ✅ | ✅ | - |
+| Regex Denial of Service (ReDoS) | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/regex-dos) |
 | Login Rate Limiting | ✅ | ✅ | - |
 
 ### 3.5 A05:2021 - Security Misconfiguration
