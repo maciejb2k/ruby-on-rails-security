@@ -66,7 +66,7 @@ class InvoicesController < ApplicationController
   private
 
   def extract_text(file_content)
-    "Przetworzona zawartość faktury PDF dla #{@invoice.name}:\n\n\n#{file_content.strip.gsub(/\s+/, ' ')}"
+    "Przetworzona zawartość faktury PDF dla #{@invoice.name}"
   end
 
   # Use callbacks to share common setup or constraints between actions.
