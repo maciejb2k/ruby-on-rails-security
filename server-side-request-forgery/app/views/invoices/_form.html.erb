@@ -1,0 +1,38 @@
+<%= form_with(model: invoice, class: "contents") do |form| %>
+  <!-- POLE: Name -->
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, value: invoice.new_record? ? "Invoice ##{SecureRandom.hex.first(8)}" : invoice.name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": invoice.errors[:name].none?, "border-red-400 focus:outline-red-600": invoice.errors[:name].any?}] %>
+
+    <% if invoice.errors[:name].any? %>
+      <p class="text-red-500 text-sm mt-1"><%= invoice.errors[:name].first %></p>
+    <% end %>
+  </div>
+
+  <!-- POLE: URL Faktury (pokazuje się tylko podczas tworzenia nowej faktury) -->
+  <% if invoice.new_record? %>
+    <div class="my-5">
+      <%= form.label :url, "Invoice URL" %>
+      <%= form.text_field :url, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": invoice.errors[:url].none?, "border-red-400 focus:outline-red-600": invoice.errors[:url].any?}] %>
+
+      <% if invoice.errors[:url].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= invoice.errors[:url].first %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <!-- POLE: Data wystawienia -->
+  <div class="my-5">
+    <%= form.label :issue_date, "Issue Date" %>
+    <%= form.date_field :issue_date, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": invoice.errors[:issue_date].none?, "border-red-400 focus:outline-red-600": invoice.errors[:issue_date].any?}], value: invoice.issue_date || Time.current %>
+
+    <% if invoice.errors[:issue_date].any? %>
+      <p class="text-red-500 text-sm mt-1"><%= invoice.errors[:issue_date].first %></p>
+    <% end %>
+  </div>
+
+  <!-- PRZYCISK SUBMIT -->
+  <div class="inline">
+    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

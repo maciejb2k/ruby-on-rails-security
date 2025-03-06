@@ -79,7 +79,7 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 
 | Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
-| Server-Side Request Forgery | ✅ | ❌ | - |
+| Server-Side Request Forgery | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/server-side-request-forgery) |
 
 ## Tworzenie nowej aplikacji Rails
 
