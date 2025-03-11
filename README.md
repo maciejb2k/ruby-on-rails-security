@@ -72,7 +72,7 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 | Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
 | Enable Logging | ✅ | ✅ | - |
-| Logging Sensitive Information | ✅ | ✅ | - |
+| Logging Sensitive Information | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/logging-sensitive-information) |
 | No Log to User | ✅ | ✅ | - |
 
 ### 3.8 A10:2021 - Server-Side Request Forgery
