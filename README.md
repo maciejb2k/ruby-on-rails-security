@@ -71,7 +71,7 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 
 | Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
-| Enable Logging | ✅ | ✅ | - |
+| Enable Logging | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/enable-logging) |
 | Logging Sensitive Information | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/logging-sensitive-information) |
 | No Log to User | ✅ | ✅ | - |
 
