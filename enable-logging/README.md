@@ -118,21 +118,31 @@ Rails.application.configure do
 end
 ```
 
-Dodatkowo, do centralnego zbierania logów warto używać np. **ELK Stack** (Elasticsearch, Logstash, Kibana), które umożliwia analizę logów w czasie rzeczywistym. Alternatywnie można używać **DataDog** jako komercyjnego rozwiązania SaaS.
+Dodatkowo, do centralnego zbierania logów warto używać zewnętrznego zcenteralizowanego systemu np. **ELK Stack** (Elasticsearch, Logstash, Kibana), które umożliwia analizę logów w czasie rzeczywistym. Alternatywnie można używać **DataDog** jako komercyjnego rozwiązania SaaS.
 
-### Logowanie wyjątków do zewnętrznego systemu (np. Sentry)
+### Logowanie kluczowych zdarzeń w systemie
 
-Samo zapisywanie wyjątków w logach nie wystarcza – błędy powinny być przesyłane do systemu monitorowania błędów, np. Sentry, który jest dostępny zarówno jako usługa SaaS, jak i w wersji self-hosted.
+Logowanie istotnych operacji, takich jak próby logowania, zmiany uprawnień użytkowników czy inne krytyczne akcje, jest kluczowe dla bezpieczeństwa aplikacji. Pozwala ono śledzić podejrzaną aktywność, ułatwia analizę incydentów i może stanowić dowód w razie naruszenia systemu. W szczególności warto rejestrować zarówno udane, jak i nieudane próby logowania, co pozwala identyfikować ataki brute-force i nieautoryzowane dostępy.
 
-Konfiguracja Sentry w Rails `config/initializers/sentry.rb`, która domyślnie będzie wysyłać wszystkie wyjątki do Sentry:
+W aplikacjach korzystających z Devise można dodać logowanie prób logowania w kontrolerze sesji:
 ```ruby
-Sentry.init do |config|
-  config.dsn = ENV['SENTRY_DSN']
-  config.breadcrumbs_logger = [:active_support_logger, :http_logger]
-  config.send_default_pii = true
+class Users::SessionsController < Devise::SessionsController
+  def create
+    user = User.find_by(email: params[:user][:email])
+    Rails.logger.info "Login attempt: #{params[:user][:email]} - #{user&.valid_password?(params[:user][:password]) ? 'Success' : 'Failure'} from #{request.remote_ip}"
+    super
+  end
 end
 ```
 
+### Logowanie zmian w kluczowych modelach
 
+Monitorowanie zmian w istotnych modelach, takich jak konta użytkowników, zamówienia czy ustawienia systemowe, pozwala kontrolować, kto i kiedy dokonał modyfikacji. Jest to szczególnie przydatne w systemach wymagających audytu oraz śledzenia edycji wrażliwych danych.
 
+W Ruby on Rails do tego celu doskonale nadaje się PaperTrail, który automatycznie zapisuje historię zmian w modelach i pozwala na ich późniejsze przywracanie. Aby go użyć, wystarczy dodać do modelu:
 
+```ruby
+class User < ApplicationRecord
+  has_paper_trail
+end
+```

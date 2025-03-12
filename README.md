@@ -73,7 +73,7 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 | - | - | - | - |
 | Enable Logging | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/enable-logging) |
 | Logging Sensitive Information | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/logging-sensitive-information) |
-| No Log to User | ✅ | ✅ | - |
+| No Log to User | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/no-log-to-user) |
 
 ### 3.8 A10:2021 - Server-Side Request Forgery
 
