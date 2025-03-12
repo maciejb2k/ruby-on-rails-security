@@ -45,7 +45,7 @@ Dodatkowo prezentowanie użytkownikowi nieobsłużonych technicznych komunikató
 Na produkcji aplikacja nie powinna wyświetlać szczegółowych komunikatów błędów. W pliku `config/environments/production.rb` należy upewnić się, że opcja `consider_all_requests_local` jest wyłączona. Domyślnie Rails ustawia ją na `false`, ale warto się upewnić:
 
 ```ruby
-config.consider_all_requests_local = true
+config.consider_all_requests_local = false
 ```
 
 ### Poprawnie obsługuj wyjątki w aplikacji
