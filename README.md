@@ -59,7 +59,7 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 | Token / Cookie Misconfiguration | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/token-cookie-misconfiguration) |
 | XML XXE | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/xml-xxe) |
 | TLS Force / HSTS | ✅ | ❌ | - |
-| Debug Mode | ✅ | ❌ | - |
+| Debug Mode | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/debug-mode) |
 
 ### 3.6 A06:2021 - Vulnerable and Outdated Components
 
