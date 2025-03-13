@@ -57,7 +57,7 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 | Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
 | Token / Cookie Misconfiguration | ✅ | ✅ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/token-cookie-misconfiguration) |
-| XML DDoS | ✅ | ❌ | - |
+| XML XXE | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/xml-xxe) |
 | TLS Force / HSTS | ✅ | ❌ | - |
 | Debug Mode | ✅ | ❌ | - |
 
