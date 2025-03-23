@@ -126,3 +126,29 @@ Dodatkowo, gdy użytkownik `maciek@example.com` chce usunąć swój zasób, to m
 ![](./screenshots/maciek-destroy-own.png)
 
 Gdyby chciał usunąć zasób należący do użytkownika `tomek@example.com`, do którego uzyskał dostęp przez podatność IDOR w metodzie show, to nie bedzie w stanie wykonać żadnej innej akcji poza wyświetleniem, bo całą reszta akcji zabroniona jest przez polisę.
+
+### Domyślna polityka "deny"
+
+Ruby on Rails jako framework nie narzuca domyślnej autoryzacji metod w kontrolerach – jeżeli programista nie zaimplementuje mechanizmu autoryzacji, akcje będą wykonywane bez ograniczeń.
+
+W przypadku biblioteki `Pundit`, której używamy w tej aplikacji, domyślnie każda metoda w polisie musi być jawnie zdefiniowana.
+
+Jeśli wywołamy `authorize @task` w kontrolerze dla danej akcji (np. `show`) i w klasie polisy `TaskPolicy` nie będzie metody` show?`, Pundit podniesie wyjątek `Pundit::NotDefinedError`, co w praktyce oznacza brak dostępu do tej akcji.
+
+Co więcej, sam fakt niewywołania `authorize` w kontrolerze nie powoduje automatycznego blokowania dostępu – dlatego dobrą praktyką jest stosowanie mechanizmów sprawdzających, czy autoryzacja została wywołana w każdej akcji, np.:
+
+```ruby
+class ApplicationController < ActionController::Base
+  include Pundit
+
+  after_action :verify_authorized, except: :index
+  after_action :verify_policy_scoped, only: :index
+end
+```
+
+## Zalecenia
+
+- **Stosowanie `Pundit` lub innego narzędzia do autoryzacji** w celu wymuszania kontroli dostępu na poziomie obiektów.
+- **Zasada "domyślnie zabroń" (deny by default)** - wdrożenie `verify_authorized` i `verify_policy_scoped` na poziomie bazowego kontrolera (np. ApplicationController), by wymusić autoryzację we wszystkich akcjach.
+- **Unikanie ręcznego sprawdzania uprawnień w kontrolerach** – lepiej stosować dedykowane klasy polis, co zwiększa czytelność i ułatwia utrzymanie kodu.
+- **Testowanie scenariuszy dostępu** – regularne testowanie aplikacji pod kątem nieautoryzowanego dostępu (w tym prób manipulacji parametrami URL).

@@ -68,7 +68,7 @@ Redis.new(url: ENV["REDIS_URL"])
 
 Tego typu połączenie stosuje się wyłącznie w środowiskach lokalnych lub wewnętrznych sieciach, gdzie nie występuje ryzyko przechwycenia ruchu.
 
-#### Połączenie szyfrowane bez weryfikacji certyfikatu (rediss:// + VERIFY_NONE)
+#### Połączenie szyfrowane bez weryfikacji certyfikatu (`rediss://` + `VERIFY_NONE`)
 
 Redis wspiera połączenia szyfrowane TLS poprzez protokół `rediss://`, co zapewnia poufność danych w tranzycie.
 Brak weryfikacji certyfikatu serwera oznacza, że klient akceptuje dowolny certyfikat, bez sprawdzania jego tożsamości.
@@ -87,7 +87,7 @@ Taka opcja często stosowana jest przy połączeniach do usług chmurowych (np. 
 
 Zapewnia szyfrowanie danych, ale nie chroni przed atakiem typu Man-in-the-Middle (MITM).
 
-#### Połączenie szyfrowane z weryfikacją certyfikatu (rediss:// + VERIFY_PEER + CA)
+#### Połączenie szyfrowane z weryfikacją certyfikatu (`rediss://` + `VERIFY_PEER` + CA)
 
 Najbezpieczniejszy wariant, w którym Redis serwer używa certyfikatu podpisanego przez zaufane CA, a klient Redis weryfikuje ten certyfikat podczas zestawiania połączenia.
 
@@ -129,11 +129,11 @@ config.action_mailer.smtp_settings = {
   user_name: ENV["SMTP_USER"],
   password: ENV["SMTP_PASSWORD"],
   authentication: :plain,
-  enable_starttls_auto: true # STARTTLS wymuszony
+  enable_starttls_auto: true
 }
 ```
 
-Jeżeli wewnętrzny serwer SMTP wspiera również bezpośrednie połączenia TLS (SMTPS na porcie 465), Rails oferuje opcję `ssl: true`. W obu przypadkach komunikacja jest chroniona za pomocą TLS i nie jest transmitowana w postaci niezaszyfrowanej.
+Jeżeli wewnętrzny serwer SMTP wspiera również bezpośrednie połączenia TLS (SMTPS na porcie `465`), Rails oferuje opcję `ssl: true`. W obu przypadkach komunikacja jest chroniona za pomocą TLS i nie jest transmitowana w postaci niezaszyfrowanej.
 
 ### Integracje API
 

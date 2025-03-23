@@ -57,3 +57,9 @@ end
 W naszej aplikacji, gdybyśmy chcieli otrzymać dostęp do tego zasobu z użyciem metody `secure_show`, otrzymamy status '404 Not Found':
 
 ![](./screenshots/maciek-show-task-secure.png)
+
+## Zalecenia
+
+- **Filtrowanie zasobów po `current_user`** – zawsze ograniczaj zapytania do danych przypisanych do zalogowanego użytkownika (np.` current_user.tasks.find`).
+- **Stosowanie mechanizmów autoryzacji** – np. bibliotek typu `Pundit` lub `CanCanCan`, które automatyzują kontrolę dostępu.
+- **Ukrywanie szczegółowych ID w URL** – stosowanie UUID zamiast prostych ID może utrudnić ataki typu IDOR.
