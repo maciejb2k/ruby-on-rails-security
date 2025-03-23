@@ -106,3 +106,16 @@ Oczywiście raporty finansowe są nadal dostępne do pobrania:
 ```
 http://localhost:3000/reports/safe_download?file=financial_report_q1.pdf
 ```
+
+## Skutki
+
+- **Odczyt wrażliwych plików z serwera** – np. plików konfiguracyjnych, danych środowiskowych (`.env`), haseł, kluczy API.
+- **Wyciek danych systemowych** – np. `/etc/passwd`, co może ułatwić dalsze etapy ataku.
+- **Możliwość eskalacji ataku** – w skrajnych przypadkach LFI może prowadzić do Remote Code Execution (RCE) przy połączeniu z innymi podatnościami.
+
+## Zalecenia
+
+- **Walidacja i sanityzacja parametrów** – zawsze sprawdzaj ścieżkę dostępu, ograniczając możliwość wychodzenia poza dozwolone katalogi.
+- **Korzystanie z pełnych ścieżek bezwzględnych** – unikaj dynamicznego budowania ścieżek na podstawie danych wejściowych bez walidacji.
+- **Unikanie bezpośredniego użycia `send_file` z parametrami użytkownika** – stosuj whitelisty plików lub katalogów.
+- **Zaimplementowanie mechanizmów logowania i monitoringu** – wykrywaj podejrzane próby dostępu do niedozwolonych lokalizacji (np. `../` w parametrach).

@@ -85,7 +85,7 @@ end
 ```
 
 ### Weryfikacja zabezpieczeń
-Po wysłaniu zapytania HTTP dla modelu `SecureUser`, aplikacja zwróci odpowiedź `200 OK`. 
+Po wysłaniu zapytania HTTP dla modelu `SecureUser`, aplikacja zwróci odpowiedź `200 OK`.
 
 ![Secure User Updated](./screenshots/show-secure.png)
 
@@ -94,3 +94,17 @@ Po wysłaniu zapytania HTTP dla modelu `SecureUser`, aplikacja zwróci odpowied�
 Jednak atrybut `admin` nie zostanie zmieniony, ponieważ nie został dozwolony w strong parameters.
 
 ![Secure User Updated](./screenshots/show-updated-secure.png)
+
+## Skutki
+
+- **Nadanie sobie nieautoryzowanych uprawnień** – atakujący może ustawić pola takie jak admin: true, role: superuser itp.
+- **Modyfikacja wrażliwych atrybutów** – zmiana pól, które normalnie nie powinny być dostępne z poziomu formularza lub API (np. `balance`, `status`, `is_verified`).
+- **Całkowite przejęcie kont użytkowników lub systemu** – jeśli np. atrybut admin zostanie zmieniony, atakujący może zyskać dostęp do panelu administracyjnego lub danych innych użytkowników.
+- **Trwałe naruszenie integralności danych** – zmiana atrybutów może powodować nieodwracalne zmiany w stanie aplikacji (np. zmiana właściciela obiektu).
+
+## Zalecenia
+
+- **Stosowanie strong parameters i whitelistingu atrybutów** – zawsze jawnie określaj, które pola mogą być przypisane masowo (np. permit(:name, :email)), wyłączając wrażliwe pola takie jak `admin`, `role`, `status`.
+- **Unikanie globalnego wyłączenia mechanizmu strong parameters** – nie ustawiaj permit_all_parameters = true w konfiguracji aplikacji.
+- **Ograniczanie przypisywania pól krytycznych tylko w logice biznesowej** – wartości pól takich jak `admin` powinny być przypisywane wyłącznie wewnętrznie w kontrolerze lub serwisie, bez udziału danych z formularza/API.
+- **Regularne testy pod kątem podatności na mass assignment** – testowanie CRUD oraz endpointy API na możliwość przypisania nieautoryzowanych atrybutów przez bezpośrednie zapytania HTTP.
