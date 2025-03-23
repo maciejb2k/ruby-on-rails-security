@@ -33,7 +33,7 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 | - | - | - | - |
 | Weak Encoding for Password | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/weak-encoding-for-password) |
 | Use of Hard-Coded Cryptographic Key | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/hard-coded-cryptographic-key) |
-| Cleartext Transmission of Sensitive Information | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/cleartext-transmission-of-sensitive-information) |
+| Cleartext Transmission of Sensitive Information | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/cleartext-transmission-sensitive-information) |
 
 ### 3.3 A03:2021 - Injection
 
@@ -61,11 +61,11 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 | TLS Force / HSTS | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/tls-force-hsts) |
 | Debug Mode | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/debug-mode) |
 
-### 3.6 A06:2021 - Vulnerable and Outdated Components
+<!-- ### 3.6 A06:2021 - Vulnerable and Outdated Components
 
 | Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
 | - | - | - | - |
-| Static Analysis on CI/CD on GitHub | ✅ | ✅ | - |
+| Static Analysis on CI/CD on GitHub | ✅ | ✅ | - | -->
 
 ### 3.7 A09:2021 - Security Logging and Monitoring Failures
 
