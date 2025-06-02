@@ -8,9 +8,7 @@ Każda aplikacja przedstawia podatność w praktyce, pokazując, jak może zosta
 
 ---
 
-🚧 To repozytorium jest wciąż rozwijane – regularnie dodawane są nowe przykłady!
-
-🌍 Obecnie jest dostępne tylko po polsku, ale w przyszłości pojawi się wersja angielska.
+🚧 Cała treść znajduje się w pracy magisterskiej w pliku `praca_magisterska.docx` - zostanie ona w przyszłości przetłumaczona na język angielski i przeniesiona do tego repozytorium.
 
 ---
 
@@ -60,12 +58,6 @@ Większość aplikacji w przykładach jest stworzona w oparciu o `Ruby on Rails 
 | XML XXE | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/xml-xxe) |
 | TLS Force / HSTS | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/tls-force-hsts) |
 | Debug Mode | ✅ | ❌ | [GitHub](https://github.com/maciejb2k/ruby-on-rails-security/tree/main/debug-mode) |
-
-<!-- ### 3.6 A06:2021 - Vulnerable and Outdated Components
-
-| Nazwa Podatności | Opis podatności | Aplikacja z przykładem | Link |
-| - | - | - | - |
-| Static Analysis on CI/CD on GitHub | ✅ | ✅ | - | -->
 
 ### 3.7 A09:2021 - Security Logging and Monitoring Failures
 

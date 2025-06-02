@@ -1,7 +1,5 @@
 # Broken Access Control
 
-Uruchomienie przykładowej aplikacji dla tej podatności:
-
 ```bash
 # Aby uruchomić aplikację, wykonaj następującą komendę:
 docker compose up -d
