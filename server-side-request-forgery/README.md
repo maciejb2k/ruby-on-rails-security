@@ -10,13 +10,3 @@ docker compose down
 # W celu rozpoczęcia pracy od nowa (usunięcia wszystkich danych) użyj:
 docker compose restart
 ```
-
-![](./screenshots/invoices-all.png)
-
-![](./screenshots/new-invoice.png)
-
-![](./screenshots/new-invoice-created.png)
-
-![](./screenshots/new-ssrf-invoice.png)
-
-![](./screenshots/new-ssrf-invoice-created.png)

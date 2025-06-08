@@ -10,9 +10,3 @@ docker compose down
 # W celu rozpoczęcia pracy od nowa (usunięcia wszystkich danych) użyj:
 docker compose restart
 ```
-
-![](./screenshots/sqli-all.png)
-
-![](./screenshots/sqli-where-good.png)
-
-![](./screenshots/sqli-where-bad.png)

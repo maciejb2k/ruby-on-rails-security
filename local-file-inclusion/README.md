@@ -10,7 +10,3 @@ docker compose down
 # W celu rozpoczęcia pracy od nowa (usunięcia wszystkich danych) użyj:
 docker compose restart
 ```
-
-![LFI](./screenshots/download-reports.png)
-
-![Access Denied](./screenshots/access-denied.png)
