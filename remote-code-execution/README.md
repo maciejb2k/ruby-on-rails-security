@@ -33,11 +33,6 @@ Insecure use of Ruby’s `open` function:
 <!-- Figure 44: Insecure use of open in controller -->
 ![alt text](image.png)
 
-```ruby
-# ❌ Insecure
-open(params[:url])
-```
-
 Ruby’s `open` can:
 
 * Read local files (`open("/etc/passwd")`)
@@ -49,18 +44,10 @@ Example malicious HTTP request:
 <!-- Figure 45: Example malicious GET request -->
 ![alt text](image-1.png)
 
-```
-GET /articles?url=|echo "RCE test" > /tmp/rce1.txt
-```
-
 This executes a system command:
 
 <!-- Figure 46: Executed system command -->
 ![alt text](image-2.png)
-
-```bash
-echo "RCE test" > /tmp/rce1.txt
-```
 
 Confirmation inside the container:
 
@@ -70,11 +57,6 @@ Confirmation inside the container:
 <!-- Figure 48: Confirming file creation from RCE -->
 ![alt text](image-4.png)
 
-```bash
-docker exec -it rails_app bash
-cat /tmp/rce1.txt
-```
-
 ⚠️ Never pass untrusted user input to `open`.
 
 ---
@@ -83,60 +65,30 @@ cat /tmp/rce1.txt
 
 Ruby’s `send` dynamically calls methods on objects:
 
-```ruby
-user.send("name")
-user.send("greet", "Maciek")
-```
-
 Insecure implementation:
 
 <!-- Figure 49: Insecure use of send in controller -->
 ![alt text](image-5.png)
-
-```ruby
-# ❌ Insecure
-@result_article.send(params[:method], params[:arg])
-```
 
 Example malicious request:
 
 <!-- Figure 50: Example malicious GET request -->
 ![alt text](image-6.png)
 
-```
-GET /articles?method=eval&arg=`echo RCE > /tmp/rce2.txt`
-```
-
 Executed code:
 
 <!-- Figure 51: Code executed from injected params -->
 ![alt text](image-7.png)
-
-```ruby
-eval("`echo RCE > /tmp/rce2.txt`")
-```
 
 Terminal confirmation:
 
 <!-- Figure 52: RCE confirmed in terminal -->
 ![alt text](image-8.png)
 
-```bash
-cat /tmp/rce2.txt
-```
-
 ✅ Secure alternative: Restrict allowed methods to a whitelist.
 
 <!-- Figure 53: Secure method whitelisting for send -->
 ![alt text](image-9.png)
-
-```ruby
-# ✅ Secure
-allowed_methods = %w[title content]
-if allowed_methods.include?(params[:method])
-  @result_article.send(params[:method])
-end
-```
 
 ---
 

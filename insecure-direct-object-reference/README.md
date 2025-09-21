@@ -44,26 +44,12 @@ Now you can view Tomek’s task — proof that the app is vulnerable to IDOR.
 
 The `show` method in `app/controllers/tasks_controller.rb` fetches tasks globally:
 
-```ruby
-# ❌ Insecure
-def show
-  @task = Task.find(params[:id]) # no ownership check
-end
-```
-
 <!-- Figure 13: Insecure show action -->
 ![alt text](image-3.png)
 
 #### Fix
 
 Scope the lookup to the authenticated user, e.g., via `current_user`:
-
-```ruby
-# ✅ Secure
-def secure_show
-  @task = current_user.tasks.find(params[:id])
-end
-```
 
 <!-- Figure 14: Secure show action -->
 ![alt text](image-4.png)

@@ -31,36 +31,12 @@ Steps:
 
 The `TaskPolicy` defines authorization rules for each action:
 
-```ruby
-class TaskPolicy < ApplicationPolicy
-  def show?
-    record.user_id == user.id
-  end
-
-  def edit?
-    record.user_id == user.id
-  end
-end
-```
-
 <!-- Figure 17: TaskPolicy class -->
 ![alt text](image-1.png)
 
 ### Controller Integration
 
 In the controller (`app/controllers/tasks_controller.rb`), Rails enforces authorization via `authorize`:
-
-```ruby
-def edit
-  @task = Task.find(params[:id])
-  authorize @task
-end
-
-def secure_show_pundit
-  @task = Task.find(params[:id])
-  authorize @task
-end
-```
 
 <!-- Figure 18: Controller using authorize -->
 ![alt text](image-2.png)
@@ -88,14 +64,6 @@ HTTP 403 Forbidden
 * Use dedicated authorization libraries: **Pundit**, **CanCanCan**, or **ActionPolicy**.
 * Apply **deny by default**: every controller action should explicitly call `authorize`.
 * Add global Pundit callbacks in `ApplicationController`:
-
-```ruby
-class ApplicationController < ActionController::Base
-  include Pundit
-
-  after_action :verify_authorized
-end
-```
 
 <!-- Figure 20: Pundit configuration in ApplicationController -->
 ![alt text](image-4.png)

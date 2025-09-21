@@ -28,27 +28,15 @@ If not properly configured, Rails can connect to PostgreSQL without encryption. 
 <!-- Figure 33: PostgreSQL connection string without encryption -->
 ![alt text](image.png)
 
-```yaml
-database_url: postgres://user:password@host:5432/app_db
-```
-
 Using `sslmode=require` enforces TLS but does **not** verify server certificates (vulnerable to MITM):
 
 <!-- Figure 34: PostgreSQL connection string with TLS but no verification -->
 ![alt text](image-1.png)
 
-```yaml
-database_url: postgres://user:password@host:5432/app_db?sslmode=require
-```
-
 Using `sslmode=verify-full` ensures both encryption and server identity verification:
 
 <!-- Figure 35: PostgreSQL connection string with TLS and CA verification -->
 ![alt text](image-2.png)
-
-```yaml
-database_url: postgres://user:password@host:5432/app_db?sslmode=verify-full&sslrootcert=ca.pem
-```
 
 Most managed databases (e.g., Amazon RDS, Heroku, DigitalOcean) enforce TLS by default and provide CA certificates.
 
@@ -61,30 +49,15 @@ Redis is often used in Rails for caching, session storage, or Sidekiq queues. By
 <!-- Figure 36: Insecure Redis connection -->
 ![alt text](image-3.png)
 
-```ruby
-Redis.new(url: "redis://:password@host:6379/0")
-```
-
 To secure Redis connections, use `rediss://` for TLS:
 
 <!-- Figure 37: Redis with TLS, no certificate verification -->
 ![alt text](image-4.png)
 
-```ruby
-Redis.new(url: "rediss://:password@host:6379/0")
-```
-
 Best practice is to enforce TLS **with certificate verification**:
 
 <!-- Figure 38: Redis with TLS and CA verification -->
 ![alt text](image-5.png)
-
-```ruby
-Redis.new(
-  url: "rediss://:password@host:6379/0",
-  ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_PEER }
-)
-```
 
 ---
 
@@ -95,32 +68,10 @@ Without TLS, SMTP traffic (including user credentials) is transmitted in clearte
 <!-- Figure 39: Insecure SMTP configuration -->
 ![alt text](image-6.png)
 
-```ruby
-config.action_mailer.smtp_settings = {
-  address: "smtp.example.com",
-  port: 25,
-  user_name: "user@example.com",
-  password: "password",
-  authentication: :plain,
-  enable_starttls_auto: false
-}
-```
-
 Secure configuration with STARTTLS enabled:
 
 <!-- Figure 40: Secure SMTP configuration with TLS -->
 ![alt text](image-7.png)
-
-```ruby
-config.action_mailer.smtp_settings = {
-  address: "smtp.example.com",
-  port: 587,
-  user_name: "user@example.com",
-  password: "password",
-  authentication: :plain,
-  enable_starttls_auto: true
-}
-```
 
 ---
 
@@ -133,27 +84,15 @@ Insecure (plain HTTP):
 <!-- Figure 41: Example of insecure API connection -->
 ![alt text](image-8.png)
 
-```ruby
-Faraday.get("http://api.partner.com/data")
-```
-
 Internal calls within a trusted Kubernetes cluster might be allowed without TLS:
 
 <!-- Figure 42: Example of internal API connection without TLS -->
 ![alt text](image-9.png)
 
-```ruby
-Faraday.get("http://internal-service:3000/data")
-```
-
 If traffic crosses clusters or cloud providers, use HTTPS with CA verification:
 
 <!-- Figure 43: Example of internal API connection with TLS and CA verification -->
 ![alt text](image-10.png)
-
-```ruby
-Faraday.new(url: "https://internal-service.company.com", ssl: { verify: true })
-```
 
 ---
 

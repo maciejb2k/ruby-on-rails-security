@@ -33,14 +33,6 @@ http://localhost:3000/reports/unsafe_download?file=financial_report_q1.pdf
 
 In the controller (`reports_controller.rb`), the vulnerable method is implemented as:
 
-```ruby
-# ❌ Insecure
-def unsafe_download
-  file = params[:file]
-  send_file(file) # no validation
-end
-```
-
 <!-- Figure 22: Vulnerable controller methods -->
 ![alt text](image-1.png)
 
@@ -55,20 +47,6 @@ This exposes the `.env` file containing sensitive configuration. Similarly, file
 ### Fix
 
 To secure the app, validate that the requested file is within the allowed directory (`reports`).
-
-```ruby
-# ✅ Secure
-def safe_download
-  base_path = Rails.root.join("reports")
-  file_path = File.expand_path(File.join(base_path, params[:file]))
-
-  if file_path.start_with?(base_path.to_s) && File.exist?(file_path)
-    send_file(file_path)
-  else
-    head :forbidden
-  end
-end
-```
 
 <!-- Figure 23: Safe controller method -->
 ![alt text](image-2.png)
