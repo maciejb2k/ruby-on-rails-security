@@ -1,14 +1,19 @@
 # Ruby on Rails Security
 
-This repository is part of my Master's thesis in Computer Science at the University of Rzeszów. It focuses on the security of web applications built with Ruby on Rails, aligned with the **OWASP Top 10 (2021)**.
+---
 
-The project is organized as a **monorepo**, containing a collection of small Rails applications. Each one demonstrates a specific security vulnerability.
+📄 **Download the original Master’s thesis in Computer Science (Polish)**: [Thesis.docx](./2025_IIstInfSR_117780_p.docx)
 
-Each application shows the vulnerability in practice — how it can be exploited, what the impact is, and then presents the secure implementation, along with recommended mitigation techniques and best practices.
+🌍 The thesis was originally written in Polish as part of my M.Sc. studies in Computer Science (following a B.Eng.). This repository contains the English translation, adapted to be developer-friendly.
 
 ---
 
-🌍 The original work was written in **Polish** as part of my Master's thesis. This repository contains the **English translation** aimed at being developer-friendly.
+This repository is part of my master’s thesis in Computer Science at the University of Rzeszów. The thesis itself serves both as academic research and as a practical **developer’s guide** to security in Ruby on Rails applications, structured around the OWASP Top 10 (2021).
+
+The project is organized as a monorepo containing a series of small Rails applications, each of which demonstrates a specific security vulnerability.
+
+Each application illustrates the vulnerability in practice — showing how it can be exploited, what the consequences are, and then how to implement a secure fix along with recommended protection techniques and best practices.
+
 
 ---
 
